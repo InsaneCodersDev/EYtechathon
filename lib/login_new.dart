@@ -30,9 +30,9 @@ class _LoginState extends State<Login> {
                       height: 400,
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                            colorFilter: ColorFilter.mode(
-                                Colors.green[400], BlendMode.modulate),
-                            image: AssetImage('assets/images/background.png'),
+                            // colorFilter: ColorFilter.mode(
+                            //     Colors.green[400], BlendMode.modulate),
+                            image: AssetImage('assets/images/background.jpg'),
                             fit: BoxFit.fill),
                       ),
                       child: Stack(
