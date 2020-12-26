@@ -1,5 +1,5 @@
 // import 'package:flutter/material.dart';
-// import 'package:mydonationapp/cookie_detail.dart';
+// import 'package:vaccinemgmt/cookie_detail.dart';
 
 // class FoodList extends StatefulWidget {
 //   @override

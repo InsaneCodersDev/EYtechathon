@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 // import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:line_awesome_icons/line_awesome_icons.dart';
-import 'package:mydonationapp/item_detail.dart';
-import 'package:mydonationapp/globals.dart' as global;
+import 'package:vaccinemgmt/item_detail.dart';
+import 'package:vaccinemgmt/globals.dart' as global;
 import 'package:circular_profile_avatar/circular_profile_avatar.dart';
 
 class Donations extends StatefulWidget {

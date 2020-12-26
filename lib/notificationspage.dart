@@ -6,7 +6,7 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 // import 'package:line_awesome_icons/line_awesome_icons.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:mydonationapp/globals.dart' as global;
+import 'package:vaccinemgmt/globals.dart' as global;
 
 class Notifications extends StatefulWidget {
   @override

@@ -1,34 +1,41 @@
 {
   "project_info": {
-    "project_number": "753844015134",
-    "firebase_url": "https://donationapp-89333.firebaseio.com",
-    "project_id": "donationapp-89333",
-    "storage_bucket": "donationapp-89333.appspot.com"
+    "project_number": "90567446874",
+    "project_id": "eytechathon-insanecoders",
+    "storage_bucket": "eytechathon-insanecoders.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:753844015134:android:0ba07f4b7486e28102de0f",
+        "mobilesdk_app_id": "1:90567446874:android:20325cffa2c0eeb24b6363",
         "android_client_info": {
-          "package_name": "com.mgv.mydonationapp"
+          "package_name": "com.insanecoders.vaccinemgmt"
         }
       },
       "oauth_client": [
         {
-          "client_id": "753844015134-gp5q58dttsjs6la62th22492ajarc1js.apps.googleusercontent.com",
+          "client_id": "90567446874-bcs4egm14qefkocrj0j9nntcds2ga34u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.insanecoders.vaccinemgmt",
+            "certificate_hash": "c22388646184676a03162c6c85971e2fe9976aeb"
+          }
+        },
+        {
+          "client_id": "90567446874-5l7tou836f75s6a23612msqoqg86vqff.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCpHR2fy9ZI-TMz_LMW-6wltU-aKT3H968"
+          "current_key": "AIzaSyCLjtFhXmpmcbu6UZC-Yb6Cnd2YA_DIuH0"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "753844015134-gp5q58dttsjs6la62th22492ajarc1js.apps.googleusercontent.com",
+              "client_id": "90567446874-5l7tou836f75s6a23612msqoqg86vqff.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

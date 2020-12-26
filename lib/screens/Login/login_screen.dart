@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mydonationapp/screens/Login/components/body.dart';
+import 'package:vaccinemgmt/screens/Login/components/body.dart';
 
 class LoginScreen extends StatelessWidget {
   @override

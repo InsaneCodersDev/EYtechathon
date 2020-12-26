@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:mydonationapp/screens/Login/login_screen.dart';
-import 'package:mydonationapp/screens/Signup/signup_screen.dart';
-import 'package:mydonationapp/screens/Welcome/components/background.dart';
-import 'package:mydonationapp/components/rounded_button.dart';
-import 'package:mydonationapp/constants.dart';
+import 'package:vaccinemgmt/screens/Login/login_screen.dart';
+import 'package:vaccinemgmt/screens/Signup/signup_screen.dart';
+import 'package:vaccinemgmt/screens/Welcome/components/background.dart';
+import 'package:vaccinemgmt/components/rounded_button.dart';
+import 'package:vaccinemgmt/constants.dart';
 import 'package:flutter_svg/svg.dart';
 
 class Body extends StatelessWidget {

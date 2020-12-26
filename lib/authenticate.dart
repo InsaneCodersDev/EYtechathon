@@ -1,12 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mydonationapp/homePage.dart';
+import 'package:vaccinemgmt/homePage.dart';
 import 'package:flutter/material.dart';
-import 'package:mydonationapp/screens/Login/login_screen.dart';
-// import 'package:mydonationapp/services/database.dart';
+// import 'package:vaccinemgmt/screens/Login/login_screen.dart';
+// import 'package:vaccinemgmt/services/database.dart';
 import 'package:provider/provider.dart';
-import 'package:mydonationapp/models/user.dart';
-import 'package:mydonationapp/screens/Welcome/welcome_screen.dart';
-import 'package:mydonationapp/globals.dart' as global;
+import 'package:vaccinemgmt/models/user.dart';
+import 'package:vaccinemgmt/screens/Welcome/welcome_screen.dart';
+import 'package:vaccinemgmt/globals.dart' as global;
 
 class Authenticate extends StatefulWidget {
   @override

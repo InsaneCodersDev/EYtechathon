@@ -5,16 +5,16 @@ import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/widgets.dart';
-// import 'package:mydonationapp/addnew.dart';
-// import 'package:mydonationapp/homePage.dart';
-// import 'package:mydonationapp/items_page.dart';
+// import 'package:vaccinemgmt/addnew.dart';
+// import 'package:vaccinemgmt/homePage.dart';
+// import 'package:vaccinemgmt/items_page.dart';
 // import 'package:provider/provider.dart';
-// import 'package:mydonationapp/models/user.dart';
+// import 'package:vaccinemgmt/models/user.dart';
 // import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mydonationapp/globals.dart' as global;
-import 'package:mydonationapp/shared/loading.dart';
-import 'package:mydonationapp/item_detail.dart';
-import 'package:mydonationapp/homePage.dart';
+import 'package:vaccinemgmt/globals.dart' as global;
+import 'package:vaccinemgmt/shared/loading.dart';
+import 'package:vaccinemgmt/item_detail.dart';
+import 'package:vaccinemgmt/homePage.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 
 class ImageCapture extends StatefulWidget {

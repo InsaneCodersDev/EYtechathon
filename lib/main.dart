@@ -1,13 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:mydonationapp/authenticate.dart';
-import 'package:mydonationapp/services/auth.dart';
+import 'package:vaccinemgmt/authenticate.dart';
+import 'package:vaccinemgmt/services/auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:mydonationapp/services/database.dart';
+import 'package:vaccinemgmt/services/database.dart';
 import 'package:provider/provider.dart';
-import 'package:mydonationapp/models/user.dart';
+import 'package:vaccinemgmt/models/user.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:mydonationapp/globals.dart' as global;
+import 'package:vaccinemgmt/globals.dart' as global;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

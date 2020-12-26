@@ -1,17 +1,17 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:mydonationapp/screens/Login/components/background.dart';
-import 'package:mydonationapp/screens/Signup/signup_screen.dart';
-import 'package:mydonationapp/components/already_have_an_account_acheck.dart';
-import 'package:mydonationapp/components/rounded_button.dart';
-import 'package:mydonationapp/components/rounded_input_field.dart';
-import 'package:mydonationapp/components/rounded_password_field.dart';
+import 'package:vaccinemgmt/screens/Login/components/background.dart';
+import 'package:vaccinemgmt/screens/Signup/signup_screen.dart';
+import 'package:vaccinemgmt/components/already_have_an_account_acheck.dart';
+import 'package:vaccinemgmt/components/rounded_button.dart';
+import 'package:vaccinemgmt/components/rounded_input_field.dart';
+import 'package:vaccinemgmt/components/rounded_password_field.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:mydonationapp/services/auth.dart';
-import 'package:mydonationapp/homePage.dart';
-import 'package:mydonationapp/shared/loading.dart';
+import 'package:vaccinemgmt/services/auth.dart';
+import 'package:vaccinemgmt/homePage.dart';
+import 'package:vaccinemgmt/shared/loading.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:mydonationapp/globals.dart' as global;
+import 'package:vaccinemgmt/globals.dart' as global;
 
 class Body extends StatefulWidget {
   const Body({

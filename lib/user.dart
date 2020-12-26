@@ -2,18 +2,18 @@ import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-import 'package:mydonationapp/constants.dart';
-import 'package:mydonationapp/homePage.dart';
-import 'package:mydonationapp/main.dart';
-import 'package:mydonationapp/profile_list_item.dart';
-import 'package:mydonationapp/models/user.dart' as firebaseuser;
-// import 'package:mydonationapp/services/database.dart';
+import 'package:vaccinemgmt/constants.dart';
+import 'package:vaccinemgmt/homePage.dart';
+import 'package:vaccinemgmt/main.dart';
+import 'package:vaccinemgmt/profile_list_item.dart';
+import 'package:vaccinemgmt/models/user.dart' as firebaseuser;
+// import 'package:vaccinemgmt/services/database.dart';
 import 'package:provider/provider.dart';
 import 'package:circular_profile_avatar/circular_profile_avatar.dart';
-import 'package:mydonationapp/services/auth.dart';
+import 'package:vaccinemgmt/services/auth.dart';
 // import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mydonationapp/services/imagecapture.dart';
-import 'package:mydonationapp/globals.dart' as global;
+import 'package:vaccinemgmt/services/imagecapture.dart';
+import 'package:vaccinemgmt/globals.dart' as global;
 import 'package:awesome_dialog/awesome_dialog.dart';
 
 class User extends StatelessWidget {

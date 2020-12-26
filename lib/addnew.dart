@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'FadeAnimation.dart';
 import 'package:flutter/widgets.dart';
-import 'package:mydonationapp/services/imagecapture.dart';
+import 'package:vaccinemgmt/services/imagecapture.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:mydonationapp/globals.dart' as global;
+import 'package:vaccinemgmt/globals.dart' as global;
 import 'package:awesome_dialog/awesome_dialog.dart';
 
 class Addnew extends StatefulWidget {

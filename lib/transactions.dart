@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mydonationapp/globals.dart' as global;
+import 'package:vaccinemgmt/globals.dart' as global;
 import 'package:circular_profile_avatar/circular_profile_avatar.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 

@@ -1,4 +1,4 @@
-package com.example.mydonationapp
+package com.insanecoders.vaccinemgmt
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,7 +1,7 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
-import 'package:mydonationapp/globals.dart' as global;
-import 'package:mydonationapp/homePage.dart';
+import 'package:vaccinemgmt/globals.dart' as global;
+import 'package:vaccinemgmt/homePage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ItemDetail extends StatefulWidget {

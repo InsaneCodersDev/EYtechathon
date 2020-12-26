@@ -1,14 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_icons/line_awesome_icons.dart';
-import 'package:mydonationapp/addnew.dart';
-import 'package:mydonationapp/newRequests.dart';
-// import 'package:mydonationapp/screens/profile.dart';
-import 'package:mydonationapp/transactions.dart';
-import 'package:mydonationapp/donationsListings.dart';
-import 'package:mydonationapp/newRequests.dart';
+import 'package:vaccinemgmt/addnew.dart';
+import 'package:vaccinemgmt/newRequests.dart';
+// import 'package:vaccinemgmt/screens/profile.dart';
+import 'package:vaccinemgmt/transactions.dart';
+import 'package:vaccinemgmt/donationsListings.dart';
+import 'package:vaccinemgmt/newRequests.dart';
 
-import 'package:mydonationapp/user.dart';
+import 'package:vaccinemgmt/user.dart';
 
 class HomePage extends StatefulWidget {
   @override
