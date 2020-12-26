@@ -30,9 +30,9 @@ class _LoginState extends State<Login> {
                       height: 400,
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                            // colorFilter: ColorFilter.mode(
-                            //     Colors.green[400], BlendMode.modulate),
-                            image: AssetImage('assets/images/background.jpg'),
+                            colorFilter: ColorFilter.mode(
+                                Colors.lightGreen[400], BlendMode.modulate),
+                            image: AssetImage('assets/images/background.png'),
                             fit: BoxFit.fill),
                       ),
                       child: Stack(
@@ -223,7 +223,7 @@ class _LoginState extends State<Login> {
                                     } else {
                                       print("Problem in signing in");
                                       setState(() {
-                                        loading = true;
+                                        loading = false;
                                       });
                                     }
                                   },
