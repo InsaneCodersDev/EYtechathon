@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:vaccinemgmt/models/user.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:vaccinemgmt/services/database.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:vaccinemgmt/globals.dart' as global;
 
 class AuthService {

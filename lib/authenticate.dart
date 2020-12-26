@@ -1,11 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:vaccinemgmt/homePage.dart';
 import 'package:flutter/material.dart';
-// import 'package:vaccinemgmt/screens/Login/login_screen.dart';
-// import 'package:vaccinemgmt/services/database.dart';
 import 'package:provider/provider.dart';
 import 'package:vaccinemgmt/models/user.dart';
-import 'package:vaccinemgmt/screens/Welcome/welcome_screen.dart';
+import 'package:vaccinemgmt/login_new.dart';
 import 'package:vaccinemgmt/globals.dart' as global;
 
 class Authenticate extends StatefulWidget {
@@ -19,7 +17,7 @@ class _LoginState extends State<Authenticate> {
     final user = Provider.of<User>(context);
     if (user == null) {
       print("user null");
-      return WelcomeScreen();
+      return Login();
     } else {
       // print(user);
       print("Hello");
