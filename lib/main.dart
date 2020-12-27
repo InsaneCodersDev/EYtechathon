@@ -8,6 +8,8 @@ import 'package:provider/provider.dart';
 import 'package:vaccinemgmt/models/user.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:vaccinemgmt/globals.dart' as global;
+import 'package:http/http.dart';
+import 'package:web3dart/web3dart.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,7 +19,8 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   final FirebaseMessaging _messaging = FirebaseMessaging();
-
+  Client httpClient;
+  Web3Client ethClient;
   @override
   Widget build(BuildContext context) {
     _messaging.getToken().then((token) {

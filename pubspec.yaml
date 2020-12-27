@@ -50,6 +50,8 @@ dependencies:
   flutter_picker:
   awesome_dialog:
   firebase_messaging: ^7.0.3
+  web3dart:
+  http: ^0.12.2
 
 dev_dependencies:
   flutter_test:
@@ -103,7 +105,6 @@ flutter:
     - family: Freddie
       fonts:
         - asset: assets/FredokaOne-Regular.ttf
-    
 
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
