@@ -5,18 +5,20 @@ class Loading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-              // colors: [Color(0x000000), Color(0xBB923CB5)],
-              colors: [
-                Color(0xBB923CB5),
-                Colors.black,
-              ], begin: Alignment.topLeft, end: Alignment.bottomRight),
-        ),
-        child: Center(
-            child: SpinKitFoldingCube(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+            // colors: [Color(0x000000), Color(0xBB923CB5)],
+            colors: [
+              Colors.teal[200],
+              Colors.grey[900],
+            ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
+      ),
+      child: Center(
+        child: SpinKitFoldingCube(
           color: Colors.white,
-          size: 50.0,
-        )));
+          size: 60.0,
+        ),
+      ),
+    );
   }
 }

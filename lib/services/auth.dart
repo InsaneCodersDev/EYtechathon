@@ -94,7 +94,7 @@ class AuthService {
         print("Data from db login : " + val.toString());
         if (val == false) {
           print("Entered false...");
-          await signOut();
+          // await signOut();
           return null;
         }
       } else {
