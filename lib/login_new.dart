@@ -228,8 +228,8 @@ class _LoginState extends State<Login> {
                                     }
                                   },
                                   child: Icon(
-                                    FontAwesomeIcons.google,
-                                    size: 25,
+                                    FontAwesomeIcons.googlePlusSquare,
+                                    size: 28,
                                     color: Colors.teal[200],
                                   ),
                                 ),
