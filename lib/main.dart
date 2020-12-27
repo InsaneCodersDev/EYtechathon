@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:vaccinemgmt/authenticate.dart';
 import 'package:vaccinemgmt/services/auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -17,10 +18,24 @@ void main() async {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   final FirebaseMessaging _messaging = FirebaseMessaging();
-  Client httpClient;
-  Web3Client ethClient;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    global.httpClient = Client();
+    global.ethClient = Web3Client(
+        "https://rinkeby.infura.io/v3/1c9ed4a1e20b4c6781a6f1d62c3bd8ae",
+        global.httpClient);
+  }
+
   @override
   Widget build(BuildContext context) {
     _messaging.getToken().then((token) {
