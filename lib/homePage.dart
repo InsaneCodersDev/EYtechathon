@@ -18,9 +18,9 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _currentIndex = 2;
   List<Widget> _children = [
-    Addnew(),
-    NewRequests(),
     Donations(),
+    NewRequests(),
+    Container(),
     Transactions(),
     User(),
   ];
@@ -42,10 +42,10 @@ class _HomePageState extends State<HomePage> {
           showSelectedLabels: false,
           showUnselectedLabels: false,
           type: BottomNavigationBarType.fixed,
-          selectedItemColor: Colors.purple,
+          selectedItemColor: Colors.teal[200],
           unselectedItemColor: Colors.white,
           elevation: 0,
-          iconSize: 32,
+          iconSize: 28,
           items: [
             BottomNavigationBarItem(
               icon: Icon(LineAwesomeIcons.plus_square),
@@ -56,11 +56,11 @@ class _HomePageState extends State<HomePage> {
               label: "Notifications",
             ),
             BottomNavigationBarItem(
-              icon: Icon(LineAwesomeIcons.search),
+              icon: Icon(Icons.featured_play_list),
               label: "Search",
             ),
             BottomNavigationBarItem(
-              icon: Icon(LineAwesomeIcons.history),
+              icon: Icon(Icons.question_answer),
               label: "History",
             ),
             BottomNavigationBarItem(
