@@ -6,7 +6,7 @@ import 'package:vaccinemgmt/newRequests.dart';
 // import 'package:vaccinemgmt/screens/profile.dart';
 import 'package:vaccinemgmt/transactions.dart';
 import 'package:vaccinemgmt/donationsListings.dart';
-import 'package:vaccinemgmt/newRequests.dart';
+import 'package:vaccinemgmt/feed_screen.dart';
 
 import 'package:vaccinemgmt/user.dart';
 
@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
   List<Widget> _children = [
     Donations(),
     NewRequests(),
-    Container(),
+    FeedScreen(),
     Transactions(),
     User(),
   ];
