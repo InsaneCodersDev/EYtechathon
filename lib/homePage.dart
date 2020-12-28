@@ -2,12 +2,17 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_icons/line_awesome_icons.dart';
 import 'package:vaccinemgmt/addnew.dart';
+import 'package:vaccinemgmt/chat_screen.dart';
 import 'package:vaccinemgmt/newRequests.dart';
 // import 'package:vaccinemgmt/screens/profile.dart';
-import 'package:vaccinemgmt/transactions.dart';
+// import 'package:vaccinemgmt/transactions.dart';
 import 'package:vaccinemgmt/donationsListings.dart';
+<<<<<<< HEAD
 import 'package:vaccinemgmt/feed_screen.dart';
 
+=======
+// import 'package:vaccinemgmt/newRequests.dart';
+>>>>>>> e25a9e64a28e12f1e45d088c352339135014ed90
 import 'package:vaccinemgmt/user.dart';
 
 class HomePage extends StatefulWidget {
@@ -20,8 +25,13 @@ class _HomePageState extends State<HomePage> {
   List<Widget> _children = [
     Donations(),
     NewRequests(),
+<<<<<<< HEAD
     FeedScreen(),
     Transactions(),
+=======
+    Container(),
+    ChatScreen(),
+>>>>>>> e25a9e64a28e12f1e45d088c352339135014ed90
     User(),
   ];
 
