@@ -13,7 +13,7 @@ class _FeedScreenState extends State<FeedScreen> {
       padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
       child: Container(
         width: double.infinity,
-        height: 505.0,
+        height: 510.0,
         decoration: BoxDecoration(
           color: Colors.grey[900],
           borderRadius: BorderRadius.circular(25.0),
@@ -175,14 +175,17 @@ class _FeedScreenState extends State<FeedScreen> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Text(
-                  'Immunogram',
-                  style: TextStyle(
-                    color: Colors.teal[200],
-                    fontFamily: 'Satisfy',
-                    fontSize: 32.0,
-                    inherit: false,
-                    fontWeight: FontWeight.bold,
+                Padding(
+                  padding: const EdgeInsets.only(top: 15),
+                  child: Text(
+                    'Immunogram',
+                    style: TextStyle(
+                      color: Colors.teal[200],
+                      fontFamily: 'Satisfy',
+                      fontSize: 32.0,
+                      inherit: false,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
                 Row(
@@ -227,8 +230,8 @@ class _FeedScreenState extends State<FeedScreen> {
                     shape: BoxShape.circle,
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black45,
-                        offset: Offset(0, 2),
+                        color: Colors.teal[200],
+                        // offset: Offset(0, 2),
                         blurRadius: 6.0,
                       ),
                     ],
