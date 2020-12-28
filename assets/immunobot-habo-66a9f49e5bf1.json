@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "immunobot-habo",
+  "private_key_id": "66a9f49e5bf1c2feb694f333180a6bd3299b802e",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC/eIPDISmHvwXY\nUjv8Rx5mRb7zPT92ti8TlpehsJqcpNmtKAJagIh+iARKgVL65BaCiDsQOjaj+EgV\n76almy4FCM5W+5aFCm62wYUxE5sVLqUwP0EwGDSzZ2uPhc5Y2mvU/AZXEi6ecpcQ\n6BALNRz9oqm//pw/cn+BnCZQwdrDM3dCzyppqbO0TrHueV75f7MvfHOOrpE1abnc\nBjF22AeYZ9gKjkSDpkE0XstIDnUp/12Uwq5fFzzEOCPnk4eFU+atuGEIBwP8MmOj\nvcwH9fzzbh392HCAhbq+8ua9LxBPF8/KaUz+KnD3s2qo53u76m916xQwVGxNJh7Z\n75jGfIMPAgMBAAECggEAEBJQlQdqkf9hwTed214o2hLOpWIlupQuPWmtjp/hSna3\n4sXx9KDHVD+chJh4W6DbltdShdktDvRfMKAuD8aHxVpo33o8tywaAPMbd/QaV1vT\n98nHcf8GJWzv5Vso5+JlnLoO2i4nhZs+vOeNuTMbHNsTfo8jlFvLAhkWSj8LWskI\nqsUlEuEKSQh4kw9Pae43fJfQ9kuifi2JMExDPJmRaDBjqQgoou4XEQVshKPsOz7j\n8KfM7joj4RMBRZ+Ycwlos3rs5TO4J8Kg+CqJ+Z7Ps5i8l66BR/c4xfigsQKzfb/O\njZaALTqQ9bL/RQVEbd1EGS1FEg0DIh3+7OdKlhAhwQKBgQD7ALnmpOMXxcStC7Uo\nGbbr02+bD7Ldd/bXckJq1TFNLhCz4qXGWd0KH6UongbNJdkOkyvq1kIK857TCkvu\nxYhryiJn1KmINOxA0rJMU7ZqxXfiZUOxtr5X4FYZT+/eJLPXTr3Wr0kuGv0Pf5Rb\nQUSFyMl6cFIhqqiohrfhKhn8oQKBgQDDSF/TAicegt0nBO4TWvA5AwLEkq/nN/q1\nd1Uh8YSR2LBn/Lry08xhPQDbwxfDmtSskRMVWGJt7j+TkbWzJx0SU1aqaFeabIlw\n6kp08lavVtjzxRzGTic30FqAwChSrIplaGalFyP8iEvVmXQxmTyxw8cTGoUBYSVp\niDaT2p4xrwKBgQCifynbA8xxS3u0e+vf9iXSLqQGQveNIWkQucv91d+BE92EV6ry\n6qKLN0l5LjVBAsuu/+BivCstY+Lixbu67O8QuV/k0Gyg3YJFxSHhACEMpqKiUuSs\nXJ6FzZpv8KxdqG01aqjEH97ElnxWWEX3fh2abw7g0W6alR1zXSQWBWelgQKBgQCn\nAg5xdzXdci2QYTb6dptbJqgHVSv6onVXHGdCUDsAQEEdrZZ0dY4k2vcQ+xgnwRKB\nQtD/QEdtnIPiwIqUXK8QLRXBRtskxg4E81oaCeb4rV19nOWu8se3hAjic3QIwGbb\nsx2VsuSj5Cx20HX+tP6jSLvIKrX1KA/G4SdL63u/IQKBgCx8l8bZkCbluTwmknj/\n9royriI5eOMQEDw1YXF9N/KyNpWWxUjIKDdQVmS8uBG5pGe+gazA3QDW9p4Xkwo5\nK0H91DXaxwjCL74izLI2u7V5hA9TCZBZfe4rxlAVXpic7n+mCfcU7z0NcyLEmV1D\nH6iU3+JU5++yqt/+oxQqmWsL\n-----END PRIVATE KEY-----\n",
+  "client_email": "immunobot-2@immunobot-habo.iam.gserviceaccount.com",
+  "client_id": "116454754506936046549",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/immunobot-2%40immunobot-habo.iam.gserviceaccount.com"
+}
