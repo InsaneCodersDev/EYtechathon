@@ -227,9 +227,9 @@ class _FeedScreenState extends State<FeedScreen> {
                     shape: BoxShape.circle,
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black45,
-                        offset: Offset(0, 2),
-                        blurRadius: 6.0,
+                        color: Colors.teal[200],
+                        // offset: Offset(0, 2),
+                        blurRadius: 10.0,
                       ),
                     ],
                   ),

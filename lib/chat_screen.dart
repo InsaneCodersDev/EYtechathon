@@ -159,6 +159,8 @@ class _ChatScreenState extends State<ChatScreen> {
           Expanded(
             child: TextField(
               controller: fieldText,
+              textInputAction: TextInputAction.send,
+              // textInputAction: TextInputAction.send,
               onChanged: (input_text) {
                 user_input = input_text;
               },
