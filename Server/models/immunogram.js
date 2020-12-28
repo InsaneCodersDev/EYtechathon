@@ -17,6 +17,7 @@ let postSchema= new mongoose.Schema({
         "comment_likes":Number,
     }],
 
-}
-);
+},
+{collection: 'ImmunoGram'});
+
 module.exports=mongoose.model('immunogram',postSchema);

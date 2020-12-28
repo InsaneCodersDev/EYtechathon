@@ -14,11 +14,12 @@ const connectDB = async () =>{
 
 router.get('/getposts', (req, res) => {
     connectDB();
-    Immunogram.find({},function(err,ImmunoGram){
-      if(err) console.log(err);
-      console.warn(ImmunoGram);
-  });
-    res.send('Hello World!');
+    Immunogram.find({}).then(immunogram => 
+      {     console.warn(immunogram);   
+          console.warn(immunogram[0].comments[0]);  
+         }).catch(err => console.log("Oops, Mistake hogayi" + err));  
+          res.send('Hello World!'); 
+         }  );
   
-  });
+
 module.exports=router;
