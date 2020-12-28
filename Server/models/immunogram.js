@@ -6,8 +6,6 @@ let postSchema= new mongoose.Schema({
     _id:mongoose.Schema.Types.ObjectId,
     username:String,
     time:Date,
-
- 
     image_url:String,
     caption:String,
     no_likes:Number,
@@ -15,9 +13,9 @@ let postSchema= new mongoose.Schema({
         "commentor_id":String,
         "comment":String,
         "comment_likes":Number,
-    }],
+     }],
 
 },
-{collection: 'ImmunoGram'});
-
+{collection:"ImmunoGram"}
+);
 module.exports=mongoose.model('immunogram',postSchema);
