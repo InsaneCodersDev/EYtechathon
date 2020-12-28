@@ -1,4 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:http/http.dart';
+import 'package:web3dart/web3dart.dart';
+import 'package:web3dart/web3dart.dart' as web3dart;
+import 'package:flutter/services.dart';
 
 String imgurl;
 String uid;
@@ -131,4 +135,58 @@ getall(String type) async {
     }
   }
   userlist = users;
+}
+
+Client httpClient;
+Web3Client ethClient;
+final myaddress = "0x6D1b5DB18CE5E775F52f640079267F2216eCE6Ee";
+var balance;
+
+Future<DeployedContract> loadContract() async {
+  String abi = await rootBundle.loadString("assets/abi.json");
+  String contractAddress = "0x153A8c28af14d9e8a76b4A5D4099EE36DB00BA8d";
+  final contract = DeployedContract(ContractAbi.fromJson(abi, "PKCoin"),
+      EthereumAddress.fromHex(contractAddress));
+  return contract;
+}
+
+Future<List<dynamic>> query(String functionName, List<dynamic> args) async {
+  final contract = await loadContract();
+  final ethFunction = contract.function(functionName);
+  final result = await ethClient.call(
+      contract: contract, function: ethFunction, params: args);
+  return result;
+}
+
+Future<String> submit(String functionName, List<dynamic> args) async {
+  EthPrivateKey credentials = EthPrivateKey.fromHex(
+      "0135a92676c6d02390830e98866b10149b833147909032c2a036244850974aa9");
+  DeployedContract contract = await loadContract();
+  final ethFunction = contract.function(functionName);
+  final result = await ethClient.sendTransaction(
+      credentials,
+      web3dart.Transaction.callContract(
+          contract: contract, function: ethFunction, parameters: args),
+      fetchChainIdFromNetworkId: true);
+  return result;
+}
+
+Future<dynamic> getBalance(String targetAddress) async {
+  // EthereumAddress address = EthereumAddress.fromHex(targetAddress);
+  List<dynamic> result = await query("getBalance", []);
+  return result[0];
+}
+
+Future<String> sendCoin(int myamount) async {
+  var bigAmount = BigInt.from(myamount);
+  var response = await submit("depositBalance", [bigAmount]);
+  print("deposited");
+  return response;
+}
+
+Future<String> withdrawCoin(int myamount) async {
+  var bigAmount = BigInt.from(myamount);
+  var response = await submit("withdrawBalanace", [bigAmount]);
+  print("withdrawn");
+  return response;
 }

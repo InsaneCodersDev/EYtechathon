@@ -36,6 +36,9 @@ class _LoginState extends State<Authenticate> {
       global.getrequests('ngouid');
       global.getrequests('uid');
       // global.getngodata();
+      global.getBalance(global.myaddress).then((res) {
+        global.balance = res;
+      });
       return HomePage();
     }
   }

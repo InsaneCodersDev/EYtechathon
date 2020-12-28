@@ -47,7 +47,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     final fuser = Provider.of<firebaseuser.User>(context);
     String imgurl = global.imgurl;
-
+    Future.delayed(Duration(seconds: 3), () async {
+      global.balance = await global.getBalance(global.myaddress);
+      setState(() {});
+    });
     ScreenUtil.init(context, height: 896, width: 414, allowFontScaling: true);
 
     var profileInfo = Expanded(
@@ -117,9 +120,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
             child: Center(
               child: Text(
-                global.type != null
-                    ? "CERTIFIED " + global.type.toUpperCase()
-                    : "",
+                global.balance != null
+                    ? "BALANCE :  " + global.balance.toString()
+                    : "NO BALANCE",
                 style: kButtonTextStyle,
               ),
             ),
@@ -235,13 +238,28 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           text: 'Add/Change you Number',
                         ),
                       ),
-                      ProfileListItem(
-                        icon: LineAwesomeIcons.envelope,
-                        text: 'Add/Change Contact Email ',
+                      GestureDetector(
+                        onTap: () async {
+                          var res = await global.sendCoin(500);
+                          global.balance =
+                              await global.getBalance(global.myaddress);
+                        },
+                        child: ProfileListItem(
+                          icon: LineAwesomeIcons.envelope,
+                          text: 'Add 500 ',
+                        ),
                       ),
-                      ProfileListItem(
-                        icon: LineAwesomeIcons.question_circle,
-                        text: 'Help & Support',
+                      GestureDetector(
+                        onTap: () async {
+                          print("Hello");
+                          var res = await global.withdrawCoin(100);
+                          global.balance =
+                              await global.getBalance(global.myaddress);
+                        },
+                        child: ProfileListItem(
+                          icon: LineAwesomeIcons.question_circle,
+                          text: 'Remove 100',
+                        ),
                       ),
                       ProfileListItem(
                         icon: LineAwesomeIcons.cog,
