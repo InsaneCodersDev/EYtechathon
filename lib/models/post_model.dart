@@ -1,3 +1,5 @@
+import 'package:vaccinemgmt/models/comment_model.dart';
+
 class Post {
   String authorName;
   String authorImageUrl;
@@ -6,6 +8,7 @@ class Post {
   String caption;
   String no_likes;
   String no_comments;
+  List<dynamic> comments;
 
   Post(
       {this.authorName,
@@ -14,7 +17,8 @@ class Post {
       this.imageUrl,
       this.caption,
       this.no_likes,
-      this.no_comments});
+      this.no_comments,
+      this.comments});
 }
 
 List<Post> posts = [];

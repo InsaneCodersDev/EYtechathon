@@ -13,6 +13,7 @@ class ViewPostScreen extends StatefulWidget {
 
 class _ViewPostScreenState extends State<ViewPostScreen> {
   Widget _buildComment(int index) {
+    print(index);
     return Padding(
       padding: EdgeInsets.all(10.0),
       child: ListTile(
@@ -34,21 +35,22 @@ class _ViewPostScreenState extends State<ViewPostScreen> {
               child: Image(
                 height: 50.0,
                 width: 50.0,
-                image: AssetImage(comments[index].authorImageUrl),
+                image: AssetImage(
+                    widget.post.authorImageUrl), /////NEEDS TO BE UPDATEDDDDD
                 fit: BoxFit.cover,
               ),
             ),
           ),
         ),
         title: Text(
-          comments[index].authorName,
+          widget.post.comments[index]["commentor_id"],
           style: TextStyle(
             color: Colors.teal[200],
             fontWeight: FontWeight.bold,
           ),
         ),
         subtitle: Text(
-          comments[index].text,
+          widget.post.comments[index]["comment"],
           style: TextStyle(
             color: Colors.teal[200],
           ),
@@ -88,7 +90,7 @@ class _ViewPostScreenState extends State<ViewPostScreen> {
                     child: Column(
                       children: <Widget>[
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          // mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: <Widget>[
                             IconButton(
                               icon: Icon(Icons.arrow_back),
@@ -150,6 +152,9 @@ class _ViewPostScreenState extends State<ViewPostScreen> {
                           onDoubleTap: () => print('Like post'),
                           child: Container(
                             margin: EdgeInsets.all(10.0),
+                            child: Image.network(
+                              widget.post.imageUrl,
+                            ),
                             width: double.infinity,
                             height: 400.0,
                             decoration: BoxDecoration(
@@ -161,10 +166,6 @@ class _ViewPostScreenState extends State<ViewPostScreen> {
                                   blurRadius: 8.0,
                                 ),
                               ],
-                              image: DecorationImage(
-                                image: AssetImage(widget.post.imageUrl),
-                                fit: BoxFit.fitWidth,
-                              ),
                             ),
                           ),
                         ),
@@ -184,7 +185,7 @@ class _ViewPostScreenState extends State<ViewPostScreen> {
                                         onPressed: () => print('Like post'),
                                       ),
                                       Text(
-                                        '2,515',
+                                        widget.post.no_likes,
                                         style: TextStyle(
                                           fontSize: 14.0,
                                           color: Colors.teal[200],
@@ -205,7 +206,7 @@ class _ViewPostScreenState extends State<ViewPostScreen> {
                                         },
                                       ),
                                       Text(
-                                        '350',
+                                        widget.post.no_comments,
                                         style: TextStyle(
                                           fontSize: 14.0,
                                           color: Colors.teal[200],
@@ -243,12 +244,9 @@ class _ViewPostScreenState extends State<ViewPostScreen> {
                 ),
               ),
               child: Column(
-                children: <Widget>[
-                  _buildComment(0),
-                  _buildComment(1),
-                  _buildComment(2),
-                  _buildComment(3),
-                  _buildComment(4),
+                children: [
+                  for (var i = widget.post.comments.length - 1; i >= 0; i--)
+                    _buildComment(i)
                 ],
               ),
             )

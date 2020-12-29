@@ -172,20 +172,26 @@ class _FeedScreenState extends State<FeedScreen> {
     posts = [];
     loaded = true;
     var httpClient = new HttpClient();
-    var uri = new Uri.https('330551e5b394.ngrok.io', '/database/getposts');
+    var uri = new Uri.https('3f828df0e323.ngrok.io', '/database/getposts');
     var request = await httpClient.getUrl(uri);
     var response = await request.close();
     var responseBody = await response.transform(utf8.decoder).join();
     print("Refreshed");
+
     for (var post in jsonDecode(responseBody)) {
       posts.add(Post(
-          authorName: post['username'],
-          authorImageUrl: 'assets/images/post0.jpg',
-          timeAgo: post['post_time'].toString(),
-          imageUrl: post['image_url'],
-          caption: post["caption"],
-          no_likes: post["no_likes"].toString(),
-          no_comments: post["comments"].length.toString()));
+        authorName: post['username'],
+        authorImageUrl: 'assets/images/post0.jpg',
+        timeAgo: post['post_time'].toString(),
+        imageUrl: post['image_url'],
+        caption: post["caption"],
+        no_likes: post["no_likes"].toString(),
+        no_comments: post["comments"].length.toString(),
+        comments: post["comments"],
+      ));
+
+      print(post["comments"][0]["commentor_id"]);
+
       setState(() {});
     }
   }
