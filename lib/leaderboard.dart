@@ -8,18 +8,23 @@ class Leaderboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(41, 30, 83, 1),
+      backgroundColor: Colors.black87,
       body: Container(
         margin: EdgeInsets.all(28),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            SizedBox(height: 50),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Hi Andrew',
-                  style: ktext,
+                  'Hi Girish',
+                  style: TextStyle(
+                    color: Colors.teal[200],
+                    fontSize: 24,
+                    fontWeight: FontWeight.w900,
+                  ),
                 ),
                 GestureDetector(
                     onTap: () {
@@ -30,7 +35,7 @@ class Leaderboard extends StatelessWidget {
                     },
                     child: Icon(
                       Icons.category,
-                      color: Colors.white,
+                      color: Colors.teal[200],
                       size: 30,
                     )),
               ],
@@ -41,7 +46,7 @@ class Leaderboard extends StatelessWidget {
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                      color: Color.fromRGBO(111, 0, 244, 1),
+                      color: Colors.teal[400],
                       borderRadius: BorderRadius.all(Radius.circular(30)),
                     ),
                     child: Padding(
@@ -83,7 +88,11 @@ class Leaderboard extends StatelessWidget {
               padding: const EdgeInsets.only(top: 25),
               child: Text(
                 'Continue Playing',
-                style: ktext,
+                style: TextStyle(
+                  color: Colors.teal[200],
+                  fontSize: 24,
+                  fontWeight: FontWeight.w900,
+                ),
               ),
             ),
             Padding(
@@ -100,10 +109,10 @@ class Leaderboard extends StatelessWidget {
                         gradient: LinearGradient(
                           // colors: [Color(0x000000), Color(0xBB923CB5)],
                           colors: [
-                            Color.fromRGBO(209, 4, 43, 1),
-                            Color.fromRGBO(214, 61, 99, 1),
+                            Colors.teal[200],
+                            Colors.black54,
                           ],
-                          begin: Alignment.topCenter,
+                          begin: Alignment.topLeft,
                           end: Alignment.bottomCenter,
                         ),
                         borderRadius: BorderRadius.all(Radius.circular(25)),
@@ -117,7 +126,11 @@ class Leaderboard extends StatelessWidget {
                       children: [
                         Text(
                           'Angry Birds 2',
-                          style: ktext,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 24,
+                            fontWeight: FontWeight.w900,
+                          ),
                         ),
                         Text(
                           'LEVEL 20',
@@ -133,16 +146,16 @@ class Leaderboard extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               CircularPercentIndicator(
-                                radius: 55.0,
-                                lineWidth: 6.0,
+                                radius: 45.0,
+                                lineWidth: 4.0,
                                 animation: true,
                                 percent: 0.2,
                                 circularStrokeCap: CircularStrokeCap.round,
                                 progressColor: Colors.black87,
                               ),
                               Transform(
-                                transform: Matrix4.skewX(-0.05),
-                                origin: Offset(50.0, 50.0),
+                                transform: Matrix4.skewY(-0.05),
+                                // origin: Offset(50.0, 40.0),
                                 child: Material(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10)),
@@ -169,11 +182,11 @@ class Leaderboard extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                    bottom: 80,
-                    left: 250,
+                    bottom: 90,
+                    left: 200,
                     child: Image(
                       image: AssetImage('assets/images/angryBird.png'),
-                      height: 140,
+                      height: 120,
                     ),
                   ),
                 ],
@@ -183,11 +196,15 @@ class Leaderboard extends StatelessWidget {
               padding: const EdgeInsets.only(top: 25),
               child: Text(
                 'Discover Games',
-                style: ktext,
+                style: TextStyle(
+                  color: Colors.teal[400],
+                  fontSize: 24,
+                  fontWeight: FontWeight.w900,
+                ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 90),
+              padding: const EdgeInsets.only(top: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -271,7 +288,7 @@ class Leaderboard extends StatelessWidget {
                         left: 20,
                         child: Image(
                           image: AssetImage('assets/images/mario.png'),
-                          height: 160,
+                          height: 90,
                         ),
                       ),
                     ],
@@ -358,7 +375,7 @@ class Leaderboard extends StatelessWidget {
                         left: 20,
                         child: Image(
                           image: AssetImage('assets/images/clashofclans.png'),
-                          height: 200,
+                          height: 110,
                         ),
                       ),
                     ],

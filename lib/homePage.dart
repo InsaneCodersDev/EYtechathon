@@ -51,11 +51,11 @@ class _HomePageState extends State<HomePage> {
           iconSize: 28,
           items: [
             BottomNavigationBarItem(
-              icon: Icon(LineAwesomeIcons.plus_square),
+              icon: Icon(LineAwesomeIcons.qrcode),
               label: "Add",
             ),
             BottomNavigationBarItem(
-              icon: Icon(LineAwesomeIcons.bell_o),
+              icon: Icon(LineAwesomeIcons.signal),
               label: "Notifications",
             ),
             BottomNavigationBarItem(
