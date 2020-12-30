@@ -1,0 +1,7 @@
+ 
+ ### Get All Posts
+ GET http://localhost:8000/database/getposts
+
+
+### Get Something
+ POST http://localhost:8000/database/getposts

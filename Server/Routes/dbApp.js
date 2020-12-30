@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const immunogram = require('../models/immunogram');
+
 
 const URI = 'mongodb+srv://InsaneCoders:insanecoders1234@cluster0.o1381.mongodb.net/ImmunoChain?retryWrites=true&w=majority';
 const Immunogram = require('../models/immunogram');
@@ -9,7 +9,6 @@ const connectDB = async () => {
   await mongoose.connect(URI, { useUnifiedTopology: true, useNewUrlParser: true });
   console.log("Connected....");
 }
-
 
 connectDB();
 
