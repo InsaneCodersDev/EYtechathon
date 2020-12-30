@@ -4,14 +4,13 @@ const mongoose=require('mongoose');
 let postSchema= new mongoose.Schema({
 
     _id:mongoose.Schema.Types.ObjectId,
-    username:String,
-    time:Date,
+
     image_url:String,
-    caption:String,
-    no_likes:Number,
-    no_dislikes:Number,
+   name:String,
+    dob:Date,
+ 
 
 },
-{collection:"ImmunoGram"}
+{collection:"Aadhar"}
 );
-module.exports=mongoose.model('immunogram',postSchema);
+module.exports=mongoose.model('Aadhar',postSchema);
