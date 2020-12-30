@@ -7,18 +7,17 @@ class Post {
   String imageUrl;
   String caption;
   String no_likes;
-  String no_comments;
-  List<dynamic> comments;
+  String no_dislikes;
 
-  Post(
-      {this.authorName,
-      this.authorImageUrl,
-      this.timeAgo,
-      this.imageUrl,
-      this.caption,
-      this.no_likes,
-      this.no_comments,
-      this.comments});
+  Post({
+    this.authorName,
+    this.authorImageUrl,
+    this.timeAgo,
+    this.imageUrl,
+    this.caption,
+    this.no_likes,
+    this.no_dislikes,
+  });
 }
 
 List<Post> posts = [];

@@ -23,6 +23,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  barcode_scan: ^2.0.1
+  qr_flutter: ^3.2.0
+  path_provider: ^1.6.5
+  percent_indicator: ^2.1.5
+  fab_circular_menu: ^1.0.0
   firebase_auth: ^0.18.3+1
   firebase_core: ^0.5.2+1
   firebase_database:

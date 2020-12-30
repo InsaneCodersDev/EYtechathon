@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:vaccinemgmt/models/post_model.dart';
-import 'package:vaccinemgmt/screens/view_post_screen.dart';
+// import 'package:vaccinemgmt/screens/view_post_screen.dart';
 import 'dart:io';
 
 class FeedScreen extends StatefulWidget {
@@ -45,10 +45,10 @@ class _FeedScreenState extends State<FeedScreen> {
                       ),
                       child: CircleAvatar(
                         child: ClipOval(
-                          child: Image(
+                          child: Image.network(
+                            posts[index].authorImageUrl,
                             height: 50.0,
                             width: 50.0,
-                            image: AssetImage(posts[index].authorImageUrl),
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -73,16 +73,16 @@ class _FeedScreenState extends State<FeedScreen> {
                   ),
                   InkWell(
                     onDoubleTap: () => print('Like post'),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => ViewPostScreen(
-                            post: posts[index],
-                          ),
-                        ),
-                      );
-                    },
+                    // onTap: () {
+                    //   Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //       builder: (_) => ViewPostScreen(
+                    //         post: posts[index],
+                    //       ),
+                    //     ),
+                    //   );
+                    // },
                     child: Image.network(
                       posts[index].imageUrl,
                       width: double.infinity,
@@ -128,18 +128,18 @@ class _FeedScreenState extends State<FeedScreen> {
                                   color: Colors.teal[200],
                                   iconSize: 30.0,
                                   onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (_) => ViewPostScreen(
-                                          post: posts[index],
-                                        ),
-                                      ),
-                                    );
+                                    // Navigator.push(
+                                    //   context,
+                                    //   MaterialPageRoute(
+                                    //     builder: (_) => ViewPostScreen(
+                                    //       post: posts[index],
+                                    //     ),
+                                    //   ),
+                                    // );
                                   },
                                 ),
                                 Text(
-                                  posts[index].no_comments,
+                                  posts[index].no_dislikes,
                                   style: TextStyle(
                                     color: Colors.teal[200],
                                     fontSize: 14.0,
@@ -172,7 +172,7 @@ class _FeedScreenState extends State<FeedScreen> {
     posts = [];
     loaded = true;
     var httpClient = new HttpClient();
-    var uri = new Uri.https('0327d13a6cd7.ngrok.io', '/database/getposts');
+    var uri = new Uri.https('d07cb74929b8.ngrok.io', '/database/getposts');
     var request = await httpClient.getUrl(uri);
     var response = await request.close();
     var responseBody = await response.transform(utf8.decoder).join();
@@ -181,16 +181,13 @@ class _FeedScreenState extends State<FeedScreen> {
     for (var post in jsonDecode(responseBody)) {
       posts.add(Post(
         authorName: post['username'],
-        authorImageUrl: 'assets/images/post0.jpg',
+        authorImageUrl: post['profile_url'],
         timeAgo: post['post_time'].toString(),
         imageUrl: post['image_url'],
         caption: post["caption"],
         no_likes: post["no_likes"].toString(),
-        no_comments: post["comments"].length.toString(),
-        comments: post["comments"],
+        no_dislikes: post["no_dislikes"].toString(),
       ));
-
-      print(post["comments"][0]["commentor_id"]);
 
       setState(() {});
     }

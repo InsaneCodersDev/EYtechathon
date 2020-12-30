@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add Post</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="main">
+
+      
+        <div class="container">
+            <div class="sign-up-content">
+                <form method="POST" action="/app/addPost" class="signup-form">
+                    <h2 class="form-title">Select Do you Want to Post?</h2>
+                    <div class="form-radio">
+                        <input type="radio" name="post_type" value="Photo" id="Photo" checked="checked" />
+                        <label for="Photo">Photo</label>
+
+                        <input type="radio" name="post_type" value="Video" id="Video" />
+                        <label for="Video">Video</label>
+
+                        <input type="radio" name="post_type" value="Status" id="Status" />
+                        <label for="Status">Status</label>
+
+                        <input type="radio" name="post_type" value="youtube" id="youtube" />
+                        <label for="youtube">YouTube</label>
+                    </div>
+
+                    <div class="form-textbox">
+                        <label for="Content URL">Post URL</label>
+                        <input type="text" name="url" id="name" />
+                    </div>
+
+
+                    <div class="form-textbox">
+                        <label for="pass">Caption</label>
+                        <input type="text" name="caption" id="pass" />
+                    </div>
+
+                    <div class="form-group">
+                        <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
+                        <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
+                    </div>
+
+                    <div class="form-textbox">
+                        <input type="submit" id="submit" class="submit" value="Upload Post" />
+                    </div>
+                </form>
+
+               
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JS -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

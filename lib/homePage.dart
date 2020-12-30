@@ -5,9 +5,11 @@ import 'package:vaccinemgmt/addnew.dart';
 import 'package:vaccinemgmt/chat_screen.dart';
 import 'package:vaccinemgmt/feed_screen.dart';
 import 'package:vaccinemgmt/newRequests.dart';
+import 'package:vaccinemgmt/leaderboard.dart';
 // import 'package:vaccinemgmt/screens/profile.dart';
 // import 'package:vaccinemgmt/transactions.dart';
 import 'package:vaccinemgmt/donationsListings.dart';
+import 'package:vaccinemgmt/Qrpage.dart';
 // import 'package:vaccinemgmt/newRequests.dart';
 import 'package:vaccinemgmt/user.dart';
 
@@ -19,8 +21,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _currentIndex = 2;
   List<Widget> _children = [
-    Donations(),
-    NewRequests(),
+    QrPage(),
+    Leaderboard(),
     FeedScreen(),
     ChatScreen(),
     User(),
