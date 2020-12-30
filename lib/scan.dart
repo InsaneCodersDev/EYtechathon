@@ -7,15 +7,12 @@ class ScanPage extends StatefulWidget {
 }
 
 class _ScanPageState extends State<ScanPage> {
-  String qrCodeResult = "Not Yet Scanned";
+  String qrCodeResult =
+      "Not Yet Scanned. Please click on Open Scanner button to verify whether your vaccine is from authentic source.";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.teal[200],
-      appBar: AppBar(
-        title: Text("ImmunoScanner"),
-        centerTitle: true,
-      ),
+      backgroundColor: Colors.grey[900],
       body: Container(
         padding: EdgeInsets.all(20.0),
         child: Column(
@@ -24,12 +21,16 @@ class _ScanPageState extends State<ScanPage> {
           children: <Widget>[
             Text(
               "Result",
-              style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  fontSize: 25.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.teal[200]),
               textAlign: TextAlign.center,
             ),
             Text(
               qrCodeResult,
               style: TextStyle(
+                color: Colors.teal[200],
                 fontSize: 20.0,
               ),
               textAlign: TextAlign.center,
@@ -38,6 +39,7 @@ class _ScanPageState extends State<ScanPage> {
               height: 20.0,
             ),
             FlatButton(
+              // color: Colors.teal[200],
               padding: EdgeInsets.all(15.0),
               onPressed: () async {
                 String codeSanner =
@@ -55,11 +57,11 @@ class _ScanPageState extends State<ScanPage> {
               },
               child: Text(
                 "Open Scanner",
-                style:
-                    TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    color: Colors.teal[200], fontWeight: FontWeight.bold),
               ),
               shape: RoundedRectangleBorder(
-                  side: BorderSide(color: Colors.blue, width: 3.0),
+                  side: BorderSide(color: Colors.teal[200], width: 3.0),
                   borderRadius: BorderRadius.circular(20.0)),
             )
           ],

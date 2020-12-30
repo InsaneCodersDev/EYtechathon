@@ -1,6 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:line_awesome_icons/line_awesome_icons.dart';
 import 'package:vaccinemgmt/models/post_model.dart';
 // import 'package:vaccinemgmt/screens/view_post_screen.dart';
 import 'dart:io';
@@ -14,7 +16,7 @@ class _FeedScreenState extends State<FeedScreen> {
   bool loaded = false;
   Widget _buildPost(int index) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+      padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 0.0),
       child: Container(
         width: double.infinity,
         // height: 510.0,
@@ -25,7 +27,7 @@ class _FeedScreenState extends State<FeedScreen> {
         child: Column(
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 10.0),
+              padding: EdgeInsets.symmetric(vertical: 6),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -89,7 +91,7 @@ class _FeedScreenState extends State<FeedScreen> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.fromLTRB(0, 12, 0, 12),
+                    padding: EdgeInsets.fromLTRB(0, 12, 0, 2),
                     child: Text(
                       "Description: " + posts[index].caption,
                       style: TextStyle(color: Colors.white),
@@ -105,9 +107,9 @@ class _FeedScreenState extends State<FeedScreen> {
                             Row(
                               children: <Widget>[
                                 IconButton(
-                                  icon: Icon(Icons.favorite_border),
+                                  icon: Icon(FontAwesomeIcons.solidThumbsUp),
                                   color: Colors.teal[200],
-                                  iconSize: 30.0,
+                                  iconSize: 20.0,
                                   onPressed: () => print('Like post'),
                                 ),
                                 Text(
@@ -124,9 +126,9 @@ class _FeedScreenState extends State<FeedScreen> {
                             Row(
                               children: <Widget>[
                                 IconButton(
-                                  icon: Icon(Icons.chat),
+                                  icon: Icon(FontAwesomeIcons.solidThumbsDown),
                                   color: Colors.teal[200],
-                                  iconSize: 30.0,
+                                  iconSize: 20.0,
                                   onPressed: () {
                                     // Navigator.push(
                                     //   context,
@@ -172,7 +174,7 @@ class _FeedScreenState extends State<FeedScreen> {
     posts = [];
     loaded = true;
     var httpClient = new HttpClient();
-    var uri = new Uri.https('d07cb74929b8.ngrok.io', '/database/getposts');
+    var uri = new Uri.https('31205796dec8.ngrok.io', '/database/getposts');
     var request = await httpClient.getUrl(uri);
     var response = await request.close();
     var responseBody = await response.transform(utf8.decoder).join();

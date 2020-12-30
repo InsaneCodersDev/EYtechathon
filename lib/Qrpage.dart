@@ -11,11 +11,7 @@ class _QrPageState extends State<QrPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.teal[200],
-      appBar: AppBar(
-        title: Text("ImmunoQrPage"),
-        centerTitle: true,
-      ),
+      backgroundColor: Colors.black87,
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
@@ -24,12 +20,27 @@ class _QrPageState extends State<QrPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
+            Text(
+              "QR Scanner",
+              style: TextStyle(
+                color: Colors.teal[200],
+                fontSize: 45,
+                fontFamily: "yellowTail",
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
             Image(
                 image: NetworkImage(
-                    "https://media.istockphoto.com/vectors/qr-code-scan-phone-icon-in-comic-style-scanner-in-smartphone-vector-vector-id1166145556")),
+                    "https://image.freepik.com/free-vector/qr-code-scanning-with-characters_23-2148635444.jpg")),
+            SizedBox(
+              height: 50.0,
+            ),
             flatButton("Scan QR CODE", ScanPage()),
             SizedBox(
-              height: 10.0,
+              height: 15.0,
             ),
             flatButton("Generate QR CODE", GeneratePage()),
           ],
@@ -42,15 +53,18 @@ class _QrPageState extends State<QrPage> {
     return FlatButton(
       padding: EdgeInsets.all(15.0),
       onPressed: () async {
-        Navigator.of(context)
+        Navigator.of(context, rootNavigator: true)
             .push(MaterialPageRoute(builder: (context) => widget));
       },
       child: Text(
         text,
-        style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
+        style: TextStyle(
+            color: Colors.teal[200],
+            fontFamily: "Varela",
+            fontWeight: FontWeight.bold),
       ),
       shape: RoundedRectangleBorder(
-          side: BorderSide(color: Colors.blue, width: 3.0),
+          side: BorderSide(color: Colors.teal[200], width: 3.0),
           borderRadius: BorderRadius.circular(20.0)),
     );
   }

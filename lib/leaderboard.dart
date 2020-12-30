@@ -8,9 +8,9 @@ class Leaderboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(41, 30, 83, 1),
+      backgroundColor: Colors.grey[900],
       body: Container(
-        margin: EdgeInsets.all(28),
+        margin: EdgeInsets.all(42),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -18,7 +18,7 @@ class Leaderboard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Hi Andrew',
+                  'Hi Janhavi',
                   style: ktext,
                 ),
                 GestureDetector(
@@ -36,17 +36,17 @@ class Leaderboard extends StatelessWidget {
               ],
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 25),
+              padding: const EdgeInsets.only(top: 20),
               child: Row(
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                      color: Color.fromRGBO(111, 0, 244, 1),
+                      color: Colors.teal[200],
                       borderRadius: BorderRadius.all(Radius.circular(30)),
                     ),
                     child: Padding(
                       padding: const EdgeInsets.only(
-                          left: 18, right: 18, top: 8, bottom: 8),
+                          left: 20, right: 18, top: 8, bottom: 8),
                       child: Text(
                         'Games',
                         style: TextStyle(
@@ -61,12 +61,12 @@ class Leaderboard extends StatelessWidget {
                   ),
                   Container(
                     decoration: BoxDecoration(
-                      color: Color.fromRGBO(81, 73, 112, 1),
+                      color: Colors.teal[200],
                       borderRadius: BorderRadius.all(Radius.circular(30)),
                     ),
                     child: Padding(
                       padding: const EdgeInsets.only(
-                          left: 18, right: 18, top: 8, bottom: 8),
+                          left: 15, right: 18, top: 8, bottom: 8),
                       child: Text(
                         'Categories',
                         style: TextStyle(
@@ -80,14 +80,14 @@ class Leaderboard extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 25),
+              padding: const EdgeInsets.only(top: 22),
               child: Text(
                 'Continue Playing',
                 style: ktext,
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 30),
+              padding: const EdgeInsets.only(top: 20),
               child: Stack(
                 overflow: Overflow.visible,
                 children: [
@@ -170,7 +170,7 @@ class Leaderboard extends StatelessWidget {
                   ),
                   Positioned(
                     bottom: 80,
-                    left: 250,
+                    left: 190,
                     child: Image(
                       image: AssetImage('assets/images/angryBird.png'),
                       height: 140,

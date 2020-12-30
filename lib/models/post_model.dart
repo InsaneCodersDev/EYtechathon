@@ -23,12 +23,12 @@ class Post {
 List<Post> posts = [];
 
 final List<String> stories = [
-  'assets/images/user1.png',
-  'assets/images/user2.png',
-  'assets/images/user3.png',
+  'assets/images/user0.jpg',
+  'assets/images/user1.jpg',
+  'assets/images/user2.jpg',
+  'assets/images/user3.jpg',
+  'assets/images/user5.png',
+  'assets/images/user6.png',
+  'assets/images/user7.png',
   'assets/images/user4.png',
-  'assets/images/user0.png',
-  'assets/images/user1.png',
-  'assets/images/user2.png',
-  'assets/images/user3.png',
 ];
