@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:vaccinemgmt/constt.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:vaccinemgmt/MyPage.dart';
+import 'package:vaccinemgmt/quiz.dart';
 
 class Leaderboard extends StatelessWidget {
   @override
@@ -163,18 +164,27 @@ class Leaderboard extends StatelessWidget {
                                     child: Material(
                                       borderRadius:
                                           BorderRadius.all(Radius.circular(10)),
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(
-                                            left: 30,
-                                            right: 30,
-                                            top: 10,
-                                            bottom: 10),
-                                        child: Text(
-                                          'Start',
-                                          style: TextStyle(
-                                              color: Colors.red.shade600,
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.bold),
+                                      child: MaterialButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (_) => QuizWiz()),
+                                          );
+                                        },
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 30,
+                                              right: 30,
+                                              top: 10,
+                                              bottom: 10),
+                                          child: Text(
+                                            'Start',
+                                            style: TextStyle(
+                                                color: Colors.red.shade600,
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.bold),
+                                          ),
                                         ),
                                       ),
                                     ),

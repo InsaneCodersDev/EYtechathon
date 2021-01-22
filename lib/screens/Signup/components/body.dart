@@ -43,6 +43,7 @@ class _BodyState extends State<Body> {
                   Text(
                     "Sign Up",
                     style: TextStyle(
+                        color: Colors.white,
                         fontWeight: FontWeight.bold,
                         fontFamily: "YellowTail",
                         fontSize: 50),
@@ -53,12 +54,19 @@ class _BodyState extends State<Body> {
                     height: size.height * 0.35,
                   ),
                   RoundedInputField(
-                    hintText: "Your Email",
+                    hintText: "Your Aadhaar Number",
                     onChanged: (value) {
                       email = value;
                     },
                   ),
                   RoundedPasswordField(
+                    onChanged: (value) {
+                      password = value;
+                    },
+                  ),
+                  RoundedInputField(
+                    hintText: "Enter the OTP",
+                    icon: Icons.message,
                     onChanged: (value) {
                       password = value;
                     },
@@ -69,7 +77,32 @@ class _BodyState extends State<Body> {
                       Padding(
                         padding: const EdgeInsets.all(5.0),
                         child: RoundedButton(
-                          width: MediaQuery.of(context).size.width * 0.45,
+                          width: MediaQuery.of(context).size.width * 0.35,
+                          text: "GET OTP",
+                          press: () async {
+                            setState(() {
+                              loading = true;
+                            });
+                            dynamic result =
+                                await _auth.registerWithEmailAndPassword(
+                                    email, password, currentstate);
+                            if (result != null) {
+                              print(result.uid);
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => HomePage()));
+                            } else {
+                              print("Problem in signing in");
+                              loading = false;
+                            }
+                          },
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: RoundedButton(
+                          width: MediaQuery.of(context).size.width * 0.4,
                           text: "SIGNUP",
                           press: () async {
                             setState(() {
@@ -107,49 +140,6 @@ class _BodyState extends State<Body> {
                   //     );
                   //   },
                   // ),
-                  OrDivider(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: <Widget>[
-                      Icon(
-                        FontAwesomeIcons.facebookSquare,
-                        size: 32,
-                        color: Colors.purple[100],
-                      ),
-                      GestureDetector(
-                        onTap: () async {
-                          setState(() {
-                            loading = true;
-                          });
-
-                          dynamic result =
-                              await _auth.googleSignIn(currentstate);
-                          if (result != null) {
-                            print(result.uid);
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => HomePage()));
-                          } else {
-                            print("Problem in signing in");
-                            setState(() {
-                              loading = false;
-                            });
-                          }
-                        },
-                        child: Icon(
-                          FontAwesomeIcons.google,
-                          size: 32,
-                          color: Colors.purple[100],
-                        ),
-                      ),
-                      Icon(
-                        FontAwesomeIcons.twitter,
-                        size: 32,
-                        color: Colors.purple[100],
-                      ),
-                    ],
-                  )
                 ],
               ),
             ),
