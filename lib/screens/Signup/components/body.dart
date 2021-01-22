@@ -33,11 +33,13 @@ class _BodyState extends State<Body> {
     Size size = MediaQuery.of(context).size;
     return loading
         ? Loading()
-        : Background(
+        : Container(
+            height: MediaQuery.of(context).size.height,
             child: SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
+                  SizedBox(height: 80),
                   Text(
                     "Sign Up",
                     style: TextStyle(
@@ -46,8 +48,8 @@ class _BodyState extends State<Body> {
                         fontSize: 50),
                   ),
                   SizedBox(height: size.height * 0.03),
-                  SvgPicture.asset(
-                    "assets/icons/signup.svg",
+                  Image.asset(
+                    "assets/images/sgnup.png",
                     height: size.height * 0.35,
                   ),
                   RoundedInputField(
@@ -64,21 +66,6 @@ class _BodyState extends State<Body> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      LiteRollingSwitch(
-                        //initial value
-                        value: true,
-                        textOn: '  Donor ',
-                        textOff: 'NGO   ',
-                        colorOn: Colors.deepPurple[400],
-                        colorOff: Colors.deepPurple,
-                        iconOn: FontAwesomeIcons.gift,
-                        iconOff: FontAwesomeIcons.signLanguage,
-                        textSize: 18.0,
-                        onChanged: (bool state) {
-                          //Use it to manage the different states
-                          currentstate = state;
-                        },
-                      ),
                       Padding(
                         padding: const EdgeInsets.all(5.0),
                         child: RoundedButton(

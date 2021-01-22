@@ -5,7 +5,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:vaccinemgmt/globals.dart' as global;
 import 'package:vaccinemgmt/services/auth.dart';
 import 'package:vaccinemgmt/homePage.dart';
+import 'package:vaccinemgmt/screens/Signup/signup_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+TextEditingController aadhaarController = new TextEditingController();
+TextEditingController pwdController = new TextEditingController();
+SharedPreferences localStorage;
 
 class Login extends StatefulWidget {
   @override
@@ -16,7 +21,6 @@ class Login extends StatefulWidget {
 }
 
 TextEditingController emailController = new TextEditingController();
-SharedPreferences localStorage;
 
 class _LoginState extends State<Login> {
   final AuthService _auth = AuthService();
@@ -135,9 +139,10 @@ class _LoginState extends State<Login> {
                                               bottom: BorderSide(
                                                   color: Colors.grey[100]))),
                                       child: TextField(
+                                        controller: aadhaarController,
                                         decoration: InputDecoration(
                                             border: InputBorder.none,
-                                            hintText: "Aadhar Number",
+                                            hintText: "Aadhaar number",
                                             hintStyle: TextStyle(
                                                 color: Colors.grey[400])),
                                         onChanged: (text) {
@@ -148,10 +153,7 @@ class _LoginState extends State<Login> {
                                     Container(
                                       padding: EdgeInsets.all(8.0),
                                       child: TextField(
-                                        onChanged: (text) {
-                                          localStorage.setString(
-                                              'password', text);
-                                        },
+                                        controller: pwdController,
                                         obscureText: true,
                                         decoration: InputDecoration(
                                             border: InputBorder.none,
@@ -168,29 +170,39 @@ class _LoginState extends State<Login> {
                           ),
                           FadeAnimation(
                             2,
-                            Container(
-                              height: 50,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                gradient: LinearGradient(
-                                  begin: Alignment.topLeft,
-                                  end: Alignment.bottomRight,
-                                  colors: [
-                                    // Color.fromRGBO(143, 148, 251, 1),
-                                    // Color.fromRGBO(143, 148, 251, .6),
-                                    Colors.teal[200],
-                                    Colors.grey[700]
-                                  ],
+                            MaterialButton(
+                              onPressed: () async {
+                                await Login.init();
+                                localStorage.setString('aadhaar',
+                                    aadhaarController.text.toString());
+                                localStorage.setString(
+                                    'password', pwdController.text.toString());
+                                print(localStorage.getString('aadhaar'));
+                              },
+                              child: Container(
+                                height: 50,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  gradient: LinearGradient(
+                                    begin: Alignment.topLeft,
+                                    end: Alignment.bottomRight,
+                                    colors: [
+                                      // Color.fromRGBO(143, 148, 251, 1),
+                                      // Color.fromRGBO(143, 148, 251, .6),
+                                      Colors.teal[200],
+                                      Colors.grey[700]
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  "Login",
-                                  style: TextStyle(
-                                      fontSize: 18,
-                                      fontFamily: "Varela",
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold),
+                                child: Center(
+                                  child: Text(
+                                    "Login",
+                                    style: TextStyle(
+                                        fontSize: 18,
+                                        fontFamily: "Varela",
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold),
+                                  ),
                                 ),
                               ),
                             ),
@@ -200,12 +212,20 @@ class _LoginState extends State<Login> {
                           ),
                           FadeAnimation(
                             2,
-                            Text(
-                              "Forgot Password ?",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: "Varela",
-                                  color: Colors.teal[200]),
+                            MaterialButton(
+                              onPressed: () {
+                                Navigator.of(context, rootNavigator: true).push(
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            new SignUpScreen()));
+                              },
+                              child: Text(
+                                "Don't have an account ? Signup",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: "Varela",
+                                    color: Colors.teal[200]),
+                              ),
                             ),
                           ),
                           SizedBox(height: 50),
