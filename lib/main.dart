@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:vaccinemgmt/authenticate.dart';
+import 'package:vaccinemgmt/homePage.dart';
 import 'package:vaccinemgmt/services/auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:vaccinemgmt/services/database.dart';
@@ -11,7 +12,6 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:vaccinemgmt/globals.dart' as global;
 import 'package:http/http.dart';
 import 'package:web3dart/web3dart.dart';
-import 'package:vaccinemgmt/screens/Signup/signup_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -49,7 +49,7 @@ class _MyAppState extends State<MyApp> {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: Authenticate(),
+        home: HomePage(),
       ),
     );
   }
