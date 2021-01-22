@@ -174,7 +174,7 @@ class _FeedScreenState extends State<FeedScreen> {
     posts = [];
     loaded = true;
     var httpClient = new HttpClient();
-    var uri = new Uri.https('0a15c893bfad.ngrok.io', '/database/getposts');
+    var uri = new Uri.https('d2ac14aeb1e4.ngrok.io', '/database/getposts');
     var request = await httpClient.getUrl(uri);
     var response = await request.close();
     var responseBody = await response.transform(utf8.decoder).join();

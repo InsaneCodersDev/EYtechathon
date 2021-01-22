@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:vaccinemgmt/globals.dart' as global;
 import 'package:vaccinemgmt/services/auth.dart';
 import 'package:vaccinemgmt/homePage.dart';
+import 'package:vaccinemgmt/screens/Signup/signup_screen.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -129,7 +130,7 @@ class _LoginState extends State<Login> {
                                       child: TextField(
                                         decoration: InputDecoration(
                                             border: InputBorder.none,
-                                            hintText: "Email or Phone number",
+                                            hintText: "Aadhaar number",
                                             hintStyle: TextStyle(
                                                 color: Colors.grey[400])),
                                       ),
@@ -137,6 +138,7 @@ class _LoginState extends State<Login> {
                                     Container(
                                       padding: EdgeInsets.all(8.0),
                                       child: TextField(
+                                        obscureText: true,
                                         decoration: InputDecoration(
                                             border: InputBorder.none,
                                             hintText: "Password",
@@ -184,12 +186,20 @@ class _LoginState extends State<Login> {
                           ),
                           FadeAnimation(
                             2,
-                            Text(
-                              "Forgot Password ?",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: "Varela",
-                                  color: Colors.teal[200]),
+                            MaterialButton(
+                              onPressed: () {
+                                Navigator.of(context, rootNavigator: true).push(
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            new SignUpScreen()));
+                              },
+                              child: Text(
+                                "Don't have an account ? Signup",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: "Varela",
+                                    color: Colors.teal[200]),
+                              ),
                             ),
                           ),
                           SizedBox(height: 50),
