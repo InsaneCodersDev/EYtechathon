@@ -44,9 +44,10 @@ router.post('/addPost', jsonParser, (req, res) => {
         caption: req.body.caption,
         no_likes: 0,
         no_dislikes: 0,
+        profile_url:"https://instagram.fbom22-1.fna.fbcdn.net/v/t51.2885-19/s320x320/73457367_681556628996410_6035727685781553152_n.jpg?_nc_ht=instagram.fbom22-1.fna.fbcdn.net&_nc_ohc=JcjeP5OkT10AX8xPu27&tp=1&oh=06146332faa715222f3833e5121b7976&oe=6017E913"
     }).save().then(data => {
         console.log(data);
-        res.send(req.body.image_url);
+        res.send("File Uploaded Sucessfully");
     }).catch(err => console.log("Oops, Mistake hogayi" + err));
 }
 );

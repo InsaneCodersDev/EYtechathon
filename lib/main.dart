@@ -10,7 +10,6 @@ import 'package:vaccinemgmt/models/user.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:vaccinemgmt/globals.dart' as global;
 import 'package:http/http.dart';
-import 'package:web3dart/web3dart.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,9 +30,6 @@ class _MyAppState extends State<MyApp> {
     // TODO: implement initState
     super.initState();
     global.httpClient = Client();
-    global.ethClient = Web3Client(
-        "https://rinkeby.infura.io/v3/1c9ed4a1e20b4c6781a6f1d62c3bd8ae",
-        global.httpClient);
   }
 
   @override

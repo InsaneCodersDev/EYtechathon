@@ -58,6 +58,7 @@ dependencies:
   firebase_messaging: ^7.0.3
   web3dart:
   http: ^0.12.2
+  shared_preferences: 0.5.8
 
 dev_dependencies:
   flutter_test:

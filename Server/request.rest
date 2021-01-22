@@ -1,6 +1,6 @@
  
  ### Get All Posts
- GET http://localhost:8000/database/getposts
+ GET http://72af6fa957e9.ngrok.io/database/getposts
 
 
 ### Get Something

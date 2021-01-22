@@ -5,15 +5,23 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:vaccinemgmt/globals.dart' as global;
 import 'package:vaccinemgmt/services/auth.dart';
 import 'package:vaccinemgmt/homePage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Login extends StatefulWidget {
   @override
   _LoginState createState() => _LoginState();
+  static Future init() async {
+    localStorage = await SharedPreferences.getInstance();
+  }
 }
+
+TextEditingController emailController = new TextEditingController();
+SharedPreferences localStorage;
 
 class _LoginState extends State<Login> {
   final AuthService _auth = AuthService();
   bool loading = false;
+
   @override
   Widget build(BuildContext context) {
     // String email, password;
@@ -129,14 +137,22 @@ class _LoginState extends State<Login> {
                                       child: TextField(
                                         decoration: InputDecoration(
                                             border: InputBorder.none,
-                                            hintText: "Email or Phone number",
+                                            hintText: "Aadhar Number",
                                             hintStyle: TextStyle(
                                                 color: Colors.grey[400])),
+                                        onChanged: (text) {
+                                          localStorage.setString('email', text);
+                                        },
                                       ),
                                     ),
                                     Container(
                                       padding: EdgeInsets.all(8.0),
                                       child: TextField(
+                                        onChanged: (text) {
+                                          localStorage.setString(
+                                              'password', text);
+                                        },
+                                        obscureText: true,
                                         decoration: InputDecoration(
                                             border: InputBorder.none,
                                             hintText: "Password",
@@ -198,8 +214,8 @@ class _LoginState extends State<Login> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: <Widget>[
-                                Icon(FontAwesomeIcons.facebookSquare,
-                                    size: 25, color: Colors.teal[200]),
+                                // Icon(FontAwesomeIcons.facebookSquare,
+                                //     size: 25, color: Colors.teal[200]),
                                 MaterialButton(
                                   onPressed: () async {
                                     setState(() {
@@ -233,10 +249,10 @@ class _LoginState extends State<Login> {
                                     color: Colors.teal[200],
                                   ),
                                 ),
-                                Icon(FontAwesomeIcons.twitter,
-                                    size: 25, color: Colors.teal[200]),
-                                Icon(FontAwesomeIcons.instagram,
-                                    size: 25, color: Colors.teal[200]),
+                                // Icon(FontAwesomeIcons.twitter,
+                                //     size: 25, color: Colors.teal[200]),
+                                // Icon(FontAwesomeIcons.instagram,
+                                //     size: 25, color: Colors.teal[200]),
                               ],
                             ),
                           ),
