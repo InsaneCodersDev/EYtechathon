@@ -173,11 +173,8 @@ class _LoginState extends State<Login> {
                             MaterialButton(
                               onPressed: () async {
                                 await Login.init();
-                                localStorage.setString('aadhaar',
-                                    aadhaarController.text.toString());
-                                localStorage.setString(
-                                    'password', pwdController.text.toString());
-                                print(localStorage.getString('aadhaar'));
+                                localStorage.setString('authenticated', "true");
+                                print(localStorage.getString('authenticated'));
                               },
                               child: Container(
                                 height: 50,
@@ -269,10 +266,6 @@ class _LoginState extends State<Login> {
                                     color: Colors.teal[200],
                                   ),
                                 ),
-                                // Icon(FontAwesomeIcons.twitter,
-                                //     size: 25, color: Colors.teal[200]),
-                                // Icon(FontAwesomeIcons.instagram,
-                                //     size: 25, color: Colors.teal[200]),
                               ],
                             ),
                           ),

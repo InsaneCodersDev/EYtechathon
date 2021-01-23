@@ -45,6 +45,7 @@ router.get('/getUser', (req, res) => {
  
 });
 
+<<<<<<< HEAD
 router.post('/generateotp',jsonParser,(req,res)=>{
   const aadhar_number =req.body.aadhar;
   Aadhar.findOne({aadhar_number:aadhar_number})
@@ -140,4 +141,8 @@ router.post('/login',jsonParser,(req,res)=>{
           }
         })
 })
+=======
+
+);
+>>>>>>> c11e075ef9eeaf3f41c5e76bdb0b972a8a146726
 module.exports = router;
