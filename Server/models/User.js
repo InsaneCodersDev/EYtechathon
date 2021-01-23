@@ -2,9 +2,7 @@ const { Int32 } = require('mongodb');
 const { Timestamp } = require('mongodb');
 const mongoose=require('mongoose');
 let postSchema= new mongoose.Schema({
-
-    _id:mongoose.Schema.Types.ObjectId,
-    usernaem:String,
+    username:String,
     aadhar_no:String,
    password:String,
     vaccinated:String,

@@ -10,12 +10,13 @@
   "license": "ISC",
   "dependencies": {
     "actions-on-google": "^2.13.0",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "dialogflow-fulfillment": "^0.6.1",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "mongodb": "^3.6.3",
     "mongoose": "^5.11.8",
-    "nodemon": "^2.0.6"
+    "nodemon": "^2.0.7"
   }
 }

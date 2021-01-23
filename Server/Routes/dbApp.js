@@ -1,8 +1,10 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
 const immunogram = require('../models/immunogram');
 const Aadhar = require('../models/Aadhar');
 const User = require('../models/User');
+const OTP = require('../models/OTP');
 var bodyParser = require('body-parser');
 
 
@@ -14,6 +16,7 @@ const URI = 'mongodb+srv://InsaneCoders:insanecoders1234@cluster0.o1381.mongodb.
 const Immunogram = require('../models/immunogram');
 const { ObjectId } = require('mongodb');
 const { request } = require('express');
+const { json } = require('body-parser');
 const router = express.Router();
 const connectDB = async () => {
   await mongoose.connect(URI, { useUnifiedTopology: true, useNewUrlParser: true });
@@ -40,7 +43,101 @@ router.get('/getUser', (req, res) => {
     res.json(posts);
   }).catch(err => console.log("Oops, Mistake hogayi" + err));
  
-}
+});
 
-);
+router.post('/generateotp',jsonParser,(req,res)=>{
+  const aadhar_number =req.body.aadhar;
+  Aadhar.findOne({aadhar_number:aadhar_number})
+        .then(user=>{
+          if(user==null){
+            console.log("addhar number not registered");
+          }else{
+            var digits = '0123456789'; 
+            let Otp_number = ''; 
+            for (let i = 0; i < 4; i++ ) { 
+            Otp_number += digits[Math.floor(Math.random() * 10)]; 
+              }
+            const newOtp = new OTP({
+              aadhar_number: aadhar_number,
+              otp: Otp_number
+              });
+              OTP.findOne({aadhar_number:aadhar_number})
+                  .then(user=>{
+                    if(user == null){
+                      newOtp.save()
+                      .then(u=>{
+                        console.log("successfull");
+                      }).catch(err=>console.log(err));
+                    }else{
+                      console.log("OTP already present");
+                    }
+                  })
+                }
+        })
+});
+
+router.post('/signup',jsonParser,(req,res)=>{
+  const aadhar_number =req.body.aadhar;
+  const password = req.body.password;
+  const otp = req.body.otp;
+
+  OTP.findOne({aadhar_number:aadhar_number})
+      .then(user=>{
+        if(user != null){
+          if(user.otp === otp){
+            Aadhar.findOne({aadhar_number:aadhar_number})
+                  .then(a=>{
+                    if(a != null){
+                      const newUser = new User({
+                        username: a.name,
+                        aadhar_no:aadhar_number,
+                        password:password,
+                        vaccinated:"NO",
+                        score:0,
+                        medical_conditions:[{
+                            "Diabetic":false,
+                            "Dproof_url":"NA",
+                            "Pulmonary":false,
+                            "Pproof_url":"NA",
+                            "Heart_disease":false,
+                            "Hproof_url":"NA",
+                        }]
+                      });
+                      bcrypt.genSalt(10, (err,salt)=> {
+                        bcrypt.hash(newUser.password, salt,(err,hash)=>{
+                            if(err) throw err;
+                             newUser.password = hash;
+                             newUser.save()
+                                .then(user => {
+                                    console.log('done');
+                                })
+                                .catch(err => console.log(err));
+                        });
+                    });
+                    }
+                  })
+          }
+        }
+      });
+});
+
+router.post('/login',jsonParser,(req,res)=>{
+  const aadhar_no =req.body.aadhar;
+  const password = req.body.password;
+
+    User.findOne({aadhar_no:aadhar_no})
+        .then(user=>{
+          if(user!=null){
+            bcrypt.compare(password, user.password).then((isMatch) => {
+              if(isMatch){
+                console.log("Logged in");
+              } else{
+                console.log('Password incorrect');
+              }
+          }).catch((err)=>console.log(err));
+          }else{
+            console.log("aadhar number not registered");
+          }
+        })
+})
 module.exports = router;

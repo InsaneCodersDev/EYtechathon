@@ -8,6 +8,8 @@ let postSchema= new mongoose.Schema({
     image_url:String,
    name:String,
     dob:Date,
+    aadhar_number:String,
+    phone:Number
  
 
 },
