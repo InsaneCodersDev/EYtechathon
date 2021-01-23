@@ -1,16 +1,10 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_icons/line_awesome_icons.dart';
-import 'package:vaccinemgmt/addnew.dart';
 import 'package:vaccinemgmt/chat_screen.dart';
 import 'package:vaccinemgmt/feed_screen.dart';
-import 'package:vaccinemgmt/newRequests.dart';
 import 'package:vaccinemgmt/leaderboard.dart';
-// import 'package:vaccinemgmt/screens/profile.dart';
-// import 'package:vaccinemgmt/transactions.dart';
-import 'package:vaccinemgmt/donationsListings.dart';
 import 'package:vaccinemgmt/Qrpage.dart';
-// import 'package:vaccinemgmt/newRequests.dart';
+
 import 'package:vaccinemgmt/user.dart';
 
 class HomePage extends StatefulWidget {

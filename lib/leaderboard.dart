@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:vaccinemgmt/constt.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:vaccinemgmt/MyPage.dart';
 import 'package:vaccinemgmt/quiz.dart';

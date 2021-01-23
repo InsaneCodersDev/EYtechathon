@@ -2,6 +2,7 @@ import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:vaccinemgmt/authenticate.dart';
 import 'package:vaccinemgmt/constants.dart';
 import 'package:vaccinemgmt/homePage.dart';
 import 'package:vaccinemgmt/main.dart';
@@ -15,8 +16,15 @@ import 'package:vaccinemgmt/services/auth.dart';
 import 'package:vaccinemgmt/services/imagecapture.dart';
 import 'package:vaccinemgmt/globals.dart' as global;
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+SharedPreferences localStorage;
 
 class User extends StatelessWidget {
+  static Future init() async {
+    localStorage = await SharedPreferences.getInstance();
+  }
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -271,10 +279,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                       GestureDetector(
                         onTap: () async {
-                          await _auth.signOut();
+                          await User.init();
+                          localStorage.setString('authenticated', "false");
+
+                          print(localStorage.getString('authenticated'));
+
                           Navigator.of(context, rootNavigator: true).push(
                               MaterialPageRoute(
-                                  builder: (context) => new MyApp()));
+                                  builder: (context) => Authenticate()));
                         },
                         child: ProfileListItem(
                           icon: LineAwesomeIcons.alternate_sign_out,
