@@ -8,7 +8,7 @@ import 'package:vaccinemgmt/screens/Signup/signup_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import "package:http/http.dart" as http;
 
-String loginurl = "https://96c255f9bd82.ngrok.io/database/login";
+String loginurl = global.tunneldomain + "/database/login";
 TextEditingController aadhaarController = new TextEditingController();
 TextEditingController pwdController = new TextEditingController();
 
@@ -260,7 +260,7 @@ class _LoginState extends State<Login> {
                                       setState(() {
                                         loading = true;
                                       });
-                                      print(global.authid);
+
                                       print("The Loading Status is: " +
                                           loading.toString());
                                       // global.userinst.update({

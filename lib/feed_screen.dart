@@ -1,11 +1,11 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:line_awesome_icons/line_awesome_icons.dart';
+// import 'package:line_awesome_icons/line_awesome_icons.dart';
 import 'package:vaccinemgmt/models/post_model.dart';
-// import 'package:vaccinemgmt/screens/view_post_screen.dart';
 import 'dart:io';
+
+import 'globals.dart' as global;
 
 class FeedScreen extends StatefulWidget {
   @override
@@ -75,16 +75,6 @@ class _FeedScreenState extends State<FeedScreen> {
                   ),
                   InkWell(
                     onDoubleTap: () => print('Like post'),
-                    // onTap: () {
-                    //   Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //       builder: (_) => ViewPostScreen(
-                    //         post: posts[index],
-                    //       ),
-                    //     ),
-                    //   );
-                    // },
                     child: Image.network(
                       posts[index].imageUrl,
                       width: double.infinity,
@@ -129,16 +119,7 @@ class _FeedScreenState extends State<FeedScreen> {
                                   icon: Icon(FontAwesomeIcons.solidThumbsDown),
                                   color: Colors.teal[200],
                                   iconSize: 20.0,
-                                  onPressed: () {
-                                    // Navigator.push(
-                                    //   context,
-                                    //   MaterialPageRoute(
-                                    //     builder: (_) => ViewPostScreen(
-                                    //       post: posts[index],
-                                    //     ),
-                                    //   ),
-                                    // );
-                                  },
+                                  onPressed: () {},
                                 ),
                                 Text(
                                   posts[index].no_dislikes,
@@ -174,7 +155,9 @@ class _FeedScreenState extends State<FeedScreen> {
     posts = [];
     loaded = true;
     var httpClient = new HttpClient();
-    var uri = new Uri.https('6789a7256aee.ngrok.io', '/database/getposts');
+    print(global.tunneldomain.substring(8));
+    var uri =
+        new Uri.https(global.tunneldomain.substring(8), '/database/getposts');
     var request = await httpClient.getUrl(uri);
     var response = await request.close();
     var responseBody = await response.transform(utf8.decoder).join();

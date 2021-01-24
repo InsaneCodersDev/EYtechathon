@@ -1,5 +1,3 @@
-import 'package:vaccinemgmt/models/comment_model.dart';
-
 class Post {
   String authorName;
   String authorImageUrl;

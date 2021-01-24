@@ -4,15 +4,14 @@ import 'package:vaccinemgmt/components/rounded_input_field.dart';
 import 'package:vaccinemgmt/components/rounded_password_field.dart';
 import 'package:vaccinemgmt/homePage.dart';
 import 'package:vaccinemgmt/shared/loading.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:vaccinemgmt/globals.dart' as global;
 import 'package:http/http.dart' as http;
 
 TextEditingController otpController = new TextEditingController();
 TextEditingController aadhaarController = new TextEditingController();
 TextEditingController passwordController = new TextEditingController();
-final String otpurl = "https://96c255f9bd82.ngrok.io/database/generateotp";
-final String signupurl = "https://96c255f9bd82.ngrok.io/database/signup";
+final String otpurl = global.tunneldomain + "/database/generateotp";
+final String signupurl = global.tunneldomain + "/database/signup";
 
 class Body extends StatefulWidget {
   @override
@@ -137,20 +136,6 @@ class _BodyState extends State<Body> {
                           ),
                         ],
                       ),
-                      // SizedBox(height: size.height * 0.03),
-                      // AlreadyHaveAnAccountCheck(
-                      //   login: false,
-                      //   press: () {
-                      //     Navigator.push(
-                      //       context,
-                      //       MaterialPageRoute(
-                      //         builder: (context) {
-                      //           return LoginScreen();
-                      //         },
-                      //       ),
-                      //     );
-                      //   },
-                      // ),
                     ],
                   ),
                 ),

@@ -2,19 +2,11 @@ import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-import 'package:vaccinemgmt/authenticate.dart';
 import 'package:vaccinemgmt/constants.dart';
 import 'package:vaccinemgmt/homePage.dart';
 import 'package:vaccinemgmt/login_new.dart';
-import 'package:vaccinemgmt/main.dart';
-import 'package:vaccinemgmt/profile_list_item.dart';
-import 'package:vaccinemgmt/models/user.dart' as firebaseuser;
-// import 'package:vaccinemgmt/services/database.dart';
-import 'package:provider/provider.dart';
 import 'package:circular_profile_avatar/circular_profile_avatar.dart';
-// import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:vaccinemgmt/services/imagecapture.dart';
-import 'package:vaccinemgmt/globals.dart' as global;
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -51,7 +43,7 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
-    String imgurl = global.imgurl;
+    // String imgurl = global.imgurl;
 
     ScreenUtil.init(context, height: 896, width: 414, allowFontScaling: true);
 
@@ -65,16 +57,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
             child: Stack(
               children: <Widget>[
                 CircularProfileAvatar(
-                  global.userdata == null ? "" : imgurl,
+                  null,
+                  // global.userdata == null ? "" : imgurl,
                   // radius:50,
                   animateFromOldImageOnUrlChange: true,
                   onTap: () async {
-                    global.calledfrom = "user";
+                    // global.calledfrom = "user";
                     await Navigator.of(context, rootNavigator: true)
                         .pushReplacement(MaterialPageRoute(
                             builder: (context) => ImageCapture()));
                     setState(() {
-                      imgurl = global.imgurl;
+                      // imgurl = global.imgurl;
                     });
                   },
                   // radius: kSpacingUnit.w * 7,
@@ -122,9 +115,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
             child: Center(
               child: Text(
-                global.balance != null
-                    ? "BALANCE :  " + global.balance.toString()
-                    : "NO BALANCE",
+                "Random String",
+                // global.balance != null
+                // ? "BALANCE :  " + global.balance.toString()
+                // : "NO BALANCE",
                 style: kButtonTextStyle,
               ),
             ),
@@ -241,23 +235,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                       ),
                       GestureDetector(
-                        onTap: () async {
-                          var res = await global.sendCoin(500);
-                          global.balance =
-                              await global.getBalance(global.myaddress);
-                        },
+                        onTap: () async {},
                         child: ProfileListItem(
                           icon: LineAwesomeIcons.envelope,
                           text: 'Add 500 ',
                         ),
                       ),
                       GestureDetector(
-                        onTap: () async {
-                          print("Hello");
-                          var res = await global.withdrawCoin(100);
-                          global.balance =
-                              await global.getBalance(global.myaddress);
-                        },
+                        onTap: () async {},
                         child: ProfileListItem(
                           icon: LineAwesomeIcons.question_circle,
                           text: 'Remove 100',

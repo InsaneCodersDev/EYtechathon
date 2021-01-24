@@ -155,7 +155,7 @@ class _ImageCaptureState extends State<ImageCapture> {
                       ),
                     ],
                   ),
-                  global.calledfrom == "addnew"
+                  "addnew" == "addnew"
                       ?
                       // FoodList().buildFoodCard(
                       //     context, _imageFile.path, "Towels", 100, 100, true),
@@ -176,13 +176,13 @@ class _ImageCaptureState extends State<ImageCapture> {
                               color: Colors.white,
                             ),
                             onPressed: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => ItemDetail(
-                                      qty: global.itemcount,
-                                      cookiename: global.itemname,
-                                      username: global.username,
-                                      mssg: global.itempickup,
-                                      assetPath: _imageFile)));
+                              // Navigator.of(context).push(MaterialPageRoute(
+                              //     builder: (context) => ItemDetail(
+                              //         qty: 10,
+                              //         cookiename: "Hello",
+                              //         username: "G1234",
+                              //         mssg: "global.itempickup",
+                              //         assetPath: _imageFile)));
                             },
                           ),
                         )
@@ -221,40 +221,40 @@ class _ImageCaptureState extends State<ImageCapture> {
                                     builder: (context) => new HomePage()));
                           },
                           btnOkOnPress: () async {
-                            if (global.calledfrom == 'user') {
-                              global.imgurl = await _startUpload(_imageFile);
-                              await global.userinst
-                                  .update({'img': global.imgurl});
-                            } else {
-                              print("from add new");
-                              global.itemphoto = await _startUpload(_imageFile);
-                              await global.userinst.update({
-                                'items': FieldValue.arrayUnion([
-                                  {
-                                    'itemname': global.itemname,
-                                    'itempickup': global.itempickup,
-                                    'itemcount': global.itemcount,
-                                    'itemcategory': global.itemcategory,
-                                    'itemphoto': global.itemphoto,
-                                    'ngoname': global.username,
-                                    'uid': global.uid
-                                  }
-                                ])
-                              });
+                            // if ("user" == 'user') {
+                            //   global.imgurl = await _startUpload(_imageFile);
+                            //   await global.userinst
+                            //       .update({'img': global.imgurl});
+                            // } else {
+                            //   print("from add new");
+                            //   global.itemphoto = await _startUpload(_imageFile);
+                            //   await global.userinst.update({
+                            //     'items': FieldValue.arrayUnion([
+                            //       {
+                            //         'itemname': global.itemname,
+                            //         'itempickup': global.itempickup,
+                            //         'itemcount': global.itemcount,
+                            //         'itemcategory': global.itemcategory,
+                            //         'itemphoto': global.itemphoto,
+                            //         'ngoname': global.username,
+                            //         'uid': global.uid
+                            //       }
+                            //     ])
+                            //   });
 
-                              global.itemname = "";
-                              global.itempickup = "";
-                              global.itemcount = "0";
-                              global.itemcategory = 0;
-                              global.itemphoto = "";
-                            }
-                            global.getdata();
-                            setState(() {
-                              loading = false;
-                            });
-                            Navigator.of(context, rootNavigator: true)
-                                .pushReplacement(MaterialPageRoute(
-                                    builder: (context) => new HomePage()));
+                            //   global.itemname = "";
+                            //   global.itempickup = "";
+                            //   global.itemcount = "0";
+                            //   global.itemcategory = 0;
+                            //   global.itemphoto = "";
+                            // }
+                            // global.getdata();
+                            // setState(() {
+                            //   loading = false;
+                            // });
+                            // Navigator.of(context, rootNavigator: true)
+                            //     .pushReplacement(MaterialPageRoute(
+                            //         builder: (context) => new HomePage()));
                           },
                         )..show();
                       },
