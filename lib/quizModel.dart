@@ -1,9 +1,13 @@
 import 'package:flutter/cupertino.dart';
 
-class Questions{
-
+class Questions {
   String qText;
-  bool isCorrect;
+  int answer;
+  String OptionA;
+  String OptionB;
+  String OptionC;
+  String OptionD;
 
-  Questions(this.qText,this.isCorrect); 
+  Questions(this.qText, this.answer, this.OptionA, this.OptionB, this.OptionC,
+      this.OptionD);
 }
