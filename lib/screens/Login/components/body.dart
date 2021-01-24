@@ -7,7 +7,7 @@ import 'package:vaccinemgmt/components/rounded_button.dart';
 import 'package:vaccinemgmt/components/rounded_input_field.dart';
 import 'package:vaccinemgmt/components/rounded_password_field.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:vaccinemgmt/services/auth.dart';
+
 import 'package:vaccinemgmt/homePage.dart';
 import 'package:vaccinemgmt/shared/loading.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -23,7 +23,6 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
-  final AuthService _auth = AuthService();
   String email, password;
   bool loading = false;
   @override
@@ -66,18 +65,6 @@ class _BodyState extends State<Body> {
                       setState(() {
                         loading = true;
                       });
-                      dynamic result = await _auth.signinWithEmailAndPassword(
-                          email, password);
-                      if (result != null) {
-                        print(result);
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => HomePage()));
-                      } else {
-                        print("Problem in signing in");
-                        loading = false;
-                      }
                     },
                   ),
                   // SizedBox(height: size.height * 0.03),
@@ -111,19 +98,6 @@ class _BodyState extends State<Body> {
                           // global.userinst.update({
                           //   'authid': FieldValue.arrayUnion([global.authid])
                           // });
-                          dynamic result = await _auth.googleSignIn(null);
-                          if (result != null) {
-                            print(result.uid);
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => HomePage()));
-                          } else {
-                            print("Problem in signing in");
-                            setState(() {
-                              loading = false;
-                            });
-                          }
                         },
                         child: Icon(
                           FontAwesomeIcons.google,

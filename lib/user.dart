@@ -12,7 +12,6 @@ import 'package:vaccinemgmt/models/user.dart' as firebaseuser;
 // import 'package:vaccinemgmt/services/database.dart';
 import 'package:provider/provider.dart';
 import 'package:circular_profile_avatar/circular_profile_avatar.dart';
-import 'package:vaccinemgmt/services/auth.dart';
 // import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:vaccinemgmt/services/imagecapture.dart';
 import 'package:vaccinemgmt/globals.dart' as global;
@@ -50,16 +49,10 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  final AuthService _auth = AuthService();
-
   @override
   Widget build(BuildContext context) {
-    final fuser = Provider.of<firebaseuser.User>(context);
     String imgurl = global.imgurl;
-    Future.delayed(Duration(seconds: 3), () async {
-      global.balance = await global.getBalance(global.myaddress);
-      setState(() {});
-    });
+
     ScreenUtil.init(context, height: 896, width: 414, allowFontScaling: true);
 
     var profileInfo = Expanded(
@@ -111,12 +104,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
           SizedBox(height: kSpacingUnit.w * 2),
           Text(
-            fuser == null ? "" : fuser.name,
+            "Girish",
             style: kTitleTextStyle,
           ),
           SizedBox(height: kSpacingUnit.w * 0.5),
           Text(
-            fuser == null ? "" : fuser.email,
+            "omigirish1999@gmail.com",
             style: kCaptionTextStyle,
           ),
           SizedBox(height: kSpacingUnit.w * 2),

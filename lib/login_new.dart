@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:vaccinemgmt/shared/loading.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:vaccinemgmt/globals.dart' as global;
-import 'package:vaccinemgmt/services/auth.dart';
 import 'package:vaccinemgmt/homePage.dart';
 import 'package:vaccinemgmt/screens/Signup/signup_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -26,7 +25,6 @@ class Login extends StatefulWidget {
 TextEditingController emailController = new TextEditingController();
 
 class _LoginState extends State<Login> {
-  final AuthService _auth = AuthService();
   bool loading = false;
 
   @override
@@ -82,20 +80,6 @@ class _LoginState extends State<Login> {
                                                 'assets/images/light-2.png'))),
                                   )),
                             ),
-                            // Positioned(
-                            //   right: 40,
-                            //   top: 40,
-                            //   width: 80,
-                            //   height: 150,
-                            //   child: FadeAnimation(
-                            //       1.5,
-                            //       Container(
-                            //         decoration: BoxDecoration(
-                            //             image: DecorationImage(
-                            //                 image: AssetImage(
-                            //                     'assets/images/clock.png'))),
-                            //       )),
-                            // ),
                             Positioned(
                               child: FadeAnimation(
                                   1.6,
@@ -282,21 +266,12 @@ class _LoginState extends State<Login> {
                                       // global.userinst.update({
                                       //   'authid': FieldValue.arrayUnion([global.authid])
                                       // });
-                                      dynamic result =
-                                          await _auth.googleSignIn(null);
-                                      if (result != null) {
-                                        print("User is " + result.uid);
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    HomePage()));
-                                      } else {
-                                        print("Problem in signing in");
-                                        setState(() {
-                                          loading = false;
-                                        });
-                                      }
+
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  HomePage()));
                                     },
                                     child: Icon(
                                       FontAwesomeIcons.googlePlusSquare,

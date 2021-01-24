@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vaccinemgmt/authenticate.dart';
 // import 'package:vaccinemgmt/authenticate.dart';
-import 'package:vaccinemgmt/services/auth.dart';
+
 // import 'package:vaccinemgmt/login.dart';
 
 class Profile extends StatefulWidget {
@@ -10,8 +10,6 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
-  final AuthService _auth = AuthService();
-
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -26,7 +24,6 @@ class _ProfileState extends State<Profile> {
                   borderRadius: BorderRadius.circular(10),
                   side: BorderSide(color: Color(0xff00b4ff), width: 3)),
               onPressed: () async {
-                await _auth.signOut();
                 // Navigator.of(context).pop();
                 Navigator.of(context).pushReplacement(
                     MaterialPageRoute(builder: (context) => Authenticate()));

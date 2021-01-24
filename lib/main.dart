@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:vaccinemgmt/authenticate.dart';
 import 'package:vaccinemgmt/homePage.dart';
-import 'package:vaccinemgmt/services/auth.dart';
+
 import 'package:firebase_core/firebase_core.dart';
-import 'package:vaccinemgmt/services/database.dart';
+
 import 'package:provider/provider.dart';
 import 'package:vaccinemgmt/models/user.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -39,15 +39,9 @@ class _MyAppState extends State<MyApp> {
     _messaging.getToken().then((token) {
       global.authid = token;
     });
-    return MultiProvider(
-      providers: [
-        StreamProvider<User>(create: (_) => AuthService().user),
-        StreamProvider<QuerySnapshot>(create: (_) => DatabaseService().users),
-      ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: Authenticate(),
-      ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Authenticate(),
     );
   }
 }
