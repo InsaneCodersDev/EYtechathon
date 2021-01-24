@@ -5,6 +5,7 @@ import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:vaccinemgmt/authenticate.dart';
 import 'package:vaccinemgmt/constants.dart';
 import 'package:vaccinemgmt/homePage.dart';
+import 'package:vaccinemgmt/login_new.dart';
 import 'package:vaccinemgmt/main.dart';
 import 'package:vaccinemgmt/profile_list_item.dart';
 import 'package:vaccinemgmt/models/user.dart' as firebaseuser;
@@ -284,9 +285,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                           print(localStorage.getString('authenticated'));
 
-                          Navigator.of(context, rootNavigator: true).push(
-                              MaterialPageRoute(
-                                  builder: (context) => Authenticate()));
+                          Navigator.of(context, rootNavigator: true)
+                              .pushReplacement(MaterialPageRoute(
+                                  builder: (context) => Login()));
                         },
                         child: ProfileListItem(
                           icon: LineAwesomeIcons.alternate_sign_out,

@@ -16,6 +16,14 @@ import 'package:vaccinemgmt/shared/loading.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lite_rolling_switch/lite_rolling_switch.dart';
 import 'package:vaccinemgmt/globals.dart' as global;
+import 'dart:io';
+import 'package:http/http.dart' as http;
+
+TextEditingController otpController = new TextEditingController();
+TextEditingController aadhaarController = new TextEditingController();
+TextEditingController passwordController = new TextEditingController();
+final String otpurl = "https://231f11297b35.ngrok.io/database/generateotp";
+final String signupurl = "https://231f11297b35.ngrok.io/database/signup";
 
 class Body extends StatefulWidget {
   @override
@@ -54,6 +62,7 @@ class _BodyState extends State<Body> {
                     height: size.height * 0.35,
                   ),
                   RoundedInputField(
+                    controller: aadhaarController,
                     hintText: "Your Aadhaar Number",
                     onChanged: (value) {
                       email = value;
@@ -65,6 +74,7 @@ class _BodyState extends State<Body> {
                     },
                   ),
                   RoundedInputField(
+                    controller: otpController,
                     hintText: "Enter the OTP",
                     icon: Icons.message,
                     onChanged: (value) {
@@ -80,22 +90,13 @@ class _BodyState extends State<Body> {
                           width: MediaQuery.of(context).size.width * 0.35,
                           text: "GET OTP",
                           press: () async {
-                            setState(() {
-                              loading = true;
-                            });
-                            dynamic result =
-                                await _auth.registerWithEmailAndPassword(
-                                    email, password, currentstate);
-                            if (result != null) {
-                              print(result.uid);
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => HomePage()));
-                            } else {
-                              print("Problem in signing in");
-                              loading = false;
-                            }
+                            var data = {
+                              'aadhar': aadhaarController.text.toString()
+                            };
+                            print(otpController.text.toString());
+                            final response = await http
+                                .post(otpurl, body: data)
+                                .then((value) => {print(value.body)});
                           },
                         ),
                       ),
@@ -105,22 +106,21 @@ class _BodyState extends State<Body> {
                           width: MediaQuery.of(context).size.width * 0.4,
                           text: "SIGNUP",
                           press: () async {
-                            setState(() {
-                              loading = true;
-                            });
-                            dynamic result =
-                                await _auth.registerWithEmailAndPassword(
-                                    email, password, currentstate);
-                            if (result != null) {
-                              print(result.uid);
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => HomePage()));
-                            } else {
-                              print("Problem in signing in");
-                              loading = false;
-                            }
+                            var data = {
+                              "aadhar": aadhaarController.text.toString(),
+                              "password": passwordController.text.toString(),
+                              "otp": otpController.text.toString()
+                            };
+                            http.post(signupurl, body: data).then((value) => {
+                                  print(value.body),
+                                  if (value.body == "True")
+                                    {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => HomePage()))
+                                    }
+                                });
                           },
                         ),
                       ),

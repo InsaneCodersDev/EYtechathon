@@ -45,13 +45,14 @@ router.get('/getUser', (req, res) => {
  
 });
 
-<<<<<<< HEAD
 router.post('/generateotp',jsonParser,(req,res)=>{
   const aadhar_number =req.body.aadhar;
+  console.log(aadhar_number);
   Aadhar.findOne({aadhar_number:aadhar_number})
         .then(user=>{
           if(user==null){
             console.log("addhar number not registered");
+            res.send("Aadhaar Number is Invalid");
           }else{
             var digits = '0123456789'; 
             let Otp_number = ''; 
@@ -68,9 +69,11 @@ router.post('/generateotp',jsonParser,(req,res)=>{
                       newOtp.save()
                       .then(u=>{
                         console.log("successfull");
+                        res.send("OTP Sent to registered Number");
                       }).catch(err=>console.log(err));
                     }else{
-                      console.log("OTP already present");
+                      console.log("OTP already Sent");
+                      res.send("OTP Already Sent");
                     }
                   })
                 }
@@ -111,12 +114,17 @@ router.post('/signup',jsonParser,(req,res)=>{
                              newUser.save()
                                 .then(user => {
                                     console.log('done');
+                                    res.send("True");
                                 })
                                 .catch(err => console.log(err));
                         });
                     });
                     }
                   })
+          }else
+          {
+            console.log("Incorrect OTP");
+            res.send("Invalid OTP");
           }
         }
       });
@@ -125,6 +133,8 @@ router.post('/signup',jsonParser,(req,res)=>{
 router.post('/login',jsonParser,(req,res)=>{
   const aadhar_no =req.body.aadhar;
   const password = req.body.password;
+  console.log(password);
+  console.log(typeof(aadhar_no));
 
     User.findOne({aadhar_no:aadhar_no})
         .then(user=>{
@@ -132,17 +142,16 @@ router.post('/login',jsonParser,(req,res)=>{
             bcrypt.compare(password, user.password).then((isMatch) => {
               if(isMatch){
                 console.log("Logged in");
+                res.send("True");
               } else{
                 console.log('Password incorrect');
+                res.send("Password Incorrect");
               }
           }).catch((err)=>console.log(err));
           }else{
             console.log("aadhar number not registered");
+            res.send("Aadhar number not registered");
           }
         })
 })
-=======
-
-);
->>>>>>> c11e075ef9eeaf3f41c5e76bdb0b972a8a146726
 module.exports = router;

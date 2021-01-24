@@ -8,14 +8,9 @@ let postSchema= new mongoose.Schema({
     image_url:String,
    name:String,
     dob:Date,
-<<<<<<< HEAD
-    aadhar_number:String,
-    phone:Number
-=======
     aadhar_numer:String,
     phone: Number
 
->>>>>>> c11e075ef9eeaf3f41c5e76bdb0b972a8a146726
  
 
 },
