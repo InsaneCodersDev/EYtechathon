@@ -4,6 +4,7 @@ const router = express.Router();
 var bodyParser = require('body-parser');   // create application/json parser 
 var jsonParser = bodyParser.json();
 var session = require('express-session');
+const Aadhar = require('../models/Aadhar');
 
 
 const URI = 'mongodb+srv://InsaneCoders:insanecoders1234@cluster0.o1381.mongodb.net/ImmunoChain?retryWrites=true&w=majority';
@@ -34,21 +35,28 @@ router.post('/post_interface', jsonParser, (req, res) => {
 );
 
 router.post('/addPost', jsonParser, (req, res) => {
-    console.log(req.body.url);
-
-    new Immunogram({
-        // _id: mongoose.Schema.Types.ObjectId,
-        username: req.session.username,
-        post_time: new Date(Date.now()),
-        image_url: req.body.url,
-        caption: req.body.caption,
-        no_likes: 0,
-        no_dislikes: 0,
-        profile_url:"https://instagram.fbom22-1.fna.fbcdn.net/v/t51.2885-19/s320x320/73457367_681556628996410_6035727685781553152_n.jpg?_nc_ht=instagram.fbom22-1.fna.fbcdn.net&_nc_ohc=JcjeP5OkT10AX8xPu27&tp=1&oh=06146332faa715222f3833e5121b7976&oe=6017E913"
-    }).save().then(data => {
-        console.log(data);
-        res.send("File Uploaded Sucessfully");
-    }).catch(err => console.log("Oops, Mistake hogayi" + err));
+    console.log(req.body);
+    console.log(req.session.username);
+    Aadhar.findOne({name:req.session.username})
+            .then(user=>{
+                if(user!=null){
+                    new Immunogram({
+                        // _id: mongoose.Schema.Types.ObjectId,
+                        username: req.session.username,
+                        post_time: new Date(Date.now()),
+                        image_url: req.body.url,
+                        caption: req.body.caption,
+                        no_likes: 0,
+                        no_dislikes: 0,
+                        profile_url:user.image_url
+                    }).save().then(data => {
+                        console.log(data);
+                        res.send("File Uploaded Sucessfully");
+                    }).catch(err => console.log("Oops, Mistake hogayi" + err));
+                }else{
+                    console.log("user not present");
+                }
+            }).catch(err=>console.log(err));
 }
 );
 
