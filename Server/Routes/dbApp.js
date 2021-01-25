@@ -28,7 +28,6 @@ connectDB();
 router.get('/getposts', (req, res) => {
 
   Immunogram.find({}).then(posts => {
-    console.warn(posts);
     res.json(posts);
   }).catch(err => console.log("Oops, Mistake hogayi" + err));
  

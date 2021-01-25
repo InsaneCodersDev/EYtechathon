@@ -57,6 +57,8 @@ dependencies:
   shared_preferences: 0.5.8
   chewie: ^0.9.10
   video_player: ^0.10.9
+  better_player: 
+  youtube_player_flutter: ^7.0.0+7
 
 dev_dependencies:
   flutter_test:

@@ -36,7 +36,6 @@ router.post('/post_interface', jsonParser, (req, res) => {
 
 router.post('/addPost', jsonParser, (req, res) => {
     console.log(req.body);
-    console.log(req.session.username);
     Aadhar.findOne({name:req.session.username})
             .then(user=>{
                 if(user!=null){
@@ -48,7 +47,8 @@ router.post('/addPost', jsonParser, (req, res) => {
                         caption: req.body.caption,
                         no_likes: 0,
                         no_dislikes: 0,
-                        profile_url:user.image_url
+                        profile_url:user.image_url,
+                        type:req.body.post_type
                     }).save().then(data => {
                         console.log(data);
                         res.send("File Uploaded Sucessfully");
