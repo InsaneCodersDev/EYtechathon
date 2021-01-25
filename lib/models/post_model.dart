@@ -6,16 +6,17 @@ class Post {
   String caption;
   String no_likes;
   String no_dislikes;
+  String type;
 
-  Post({
-    this.authorName,
-    this.authorImageUrl,
-    this.timeAgo,
-    this.imageUrl,
-    this.caption,
-    this.no_likes,
-    this.no_dislikes,
-  });
+  Post(
+      {this.authorName,
+      this.authorImageUrl,
+      this.timeAgo,
+      this.imageUrl,
+      this.caption,
+      this.no_likes,
+      this.no_dislikes,
+      this.type});
 }
 
 List<Post> posts = [];

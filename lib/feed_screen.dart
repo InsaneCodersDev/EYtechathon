@@ -4,8 +4,11 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 // import 'package:line_awesome_icons/line_awesome_icons.dart';
 import 'package:vaccinemgmt/models/post_model.dart';
 import 'dart:io';
-
+import 'package:chewie/chewie.dart';
 import 'globals.dart' as global;
+import 'package:video_player/video_player.dart';
+
+String type = "Video";
 
 class FeedScreen extends StatefulWidget {
   @override
@@ -47,12 +50,14 @@ class _FeedScreenState extends State<FeedScreen> {
                       ),
                       child: CircleAvatar(
                         child: ClipOval(
-                          child: Image.network(
-                            posts[index].authorImageUrl,
-                            height: 50.0,
-                            width: 50.0,
-                            fit: BoxFit.cover,
-                          ),
+                          child: posts[index].type == "photo"
+                              ? Image.network(
+                                  posts[index].authorImageUrl,
+                                  height: 50.0,
+                                  width: 50.0,
+                                  fit: BoxFit.cover,
+                                )
+                              : null,
                         ),
                       ),
                     ),
@@ -165,14 +170,14 @@ class _FeedScreenState extends State<FeedScreen> {
 
     for (var post in jsonDecode(responseBody)) {
       posts.add(Post(
-        authorName: post['username'],
-        authorImageUrl: post['profile_url'],
-        timeAgo: post['post_time'].toString(),
-        imageUrl: post['image_url'],
-        caption: post["caption"],
-        no_likes: post["no_likes"].toString(),
-        no_dislikes: post["no_dislikes"].toString(),
-      ));
+          authorName: post['username'],
+          authorImageUrl: post['profile_url'],
+          timeAgo: post['post_time'].toString(),
+          imageUrl: post['image_url'],
+          caption: post["caption"],
+          no_likes: post["no_likes"].toString(),
+          no_dislikes: post["no_dislikes"].toString(),
+          type: post["type"].toString()));
 
       setState(() {});
     }

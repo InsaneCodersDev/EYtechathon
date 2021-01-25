@@ -9,6 +9,7 @@ import 'package:circular_profile_avatar/circular_profile_avatar.dart';
 import 'package:vaccinemgmt/services/imagecapture.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'profile_list_item.dart';
 
 SharedPreferences localStorage;
 
@@ -62,13 +63,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   // radius:50,
                   animateFromOldImageOnUrlChange: true,
                   onTap: () async {
-                    // global.calledfrom = "user";
-                    await Navigator.of(context, rootNavigator: true)
-                        .pushReplacement(MaterialPageRoute(
-                            builder: (context) => ImageCapture()));
-                    setState(() {
-                      // imgurl = global.imgurl;
-                    });
+                    // // global.calledfrom = "user";
+                    // await Navigator.of(context, rootNavigator: true)
+                    //     .pushReplacement(MaterialPageRoute(
+                    //         builder: (context) => ImageCapture()));
+                    // setState(() {
+                    //   // imgurl = global.imgurl;
+                    // });
                   },
                   // radius: kSpacingUnit.w * 7,
                 ),

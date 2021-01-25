@@ -4,7 +4,6 @@ import 'package:vaccinemgmt/chat_screen.dart';
 import 'package:vaccinemgmt/feed_screen.dart';
 import 'package:vaccinemgmt/leaderboard.dart';
 import 'package:vaccinemgmt/Qrpage.dart';
-
 import 'package:vaccinemgmt/user.dart';
 
 class HomePage extends StatefulWidget {

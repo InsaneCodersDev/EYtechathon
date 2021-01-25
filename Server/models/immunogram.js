@@ -10,7 +10,8 @@ let postSchema= new mongoose.Schema({
     caption:String,
     no_likes:Number,
     no_dislikes:Number,
-    profile_url:String
+    profile_url:String,
+    type:String
 
 },
 {collection:"ImmunoGram"}

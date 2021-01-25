@@ -64,6 +64,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.0-nullsafety.1"
+  chewie:
+    dependency: "direct main"
+    description:
+      name: chewie
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.9.10"
   circular_profile_avatar:
     dependency: "direct main"
     description:
@@ -78,27 +85,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.0-nullsafety.1"
-  cloud_firestore:
-    dependency: "direct main"
-    description:
-      name: cloud_firestore
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.14.3+1"
-  cloud_firestore_platform_interface:
-    dependency: transitive
-    description:
-      name: cloud_firestore_platform_interface
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.2.0"
-  cloud_firestore_web:
-    dependency: transitive
-    description:
-      name: cloud_firestore_web
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.2.1+1"
   collection:
     dependency: transitive
     description:
@@ -197,41 +183,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.2.1+1"
-  firebase_database:
-    dependency: "direct main"
-    description:
-      name: firebase_database
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "4.3.0"
-  firebase_messaging:
-    dependency: "direct main"
-    description:
-      name: firebase_messaging
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "7.0.3"
-  firebase_storage:
-    dependency: "direct main"
-    description:
-      name: firebase_storage
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "5.1.0"
-  firebase_storage_platform_interface:
-    dependency: transitive
-    description:
-      name: firebase_storage_platform_interface
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.1"
-  firebase_storage_web:
-    dependency: transitive
-    description:
-      name: firebase_storage_web
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.1.1"
   flare_dart:
     dependency: transitive
     description:
@@ -447,6 +398,13 @@ packages:
     dependency: transitive
     description:
       name: octo_image
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.3.0"
+  open_iconic_flutter:
+    dependency: transitive
+    description:
+      name: open_iconic_flutter
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.3.0"
@@ -763,6 +721,34 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0-nullsafety.3"
+  video_player:
+    dependency: "direct main"
+    description:
+      name: video_player
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.10.12+5"
+  video_player_platform_interface:
+    dependency: transitive
+    description:
+      name: video_player_platform_interface
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.2.0"
+  video_player_web:
+    dependency: transitive
+    description:
+      name: video_player_web
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.4+1"
+  wakelock:
+    dependency: transitive
+    description:
+      name: wakelock
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.4+2"
   web3dart:
     dependency: "direct main"
     description:
