@@ -1,14 +1,14 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-// import 'package:line_awesome_icons/line_awesome_icons.dart';
 import 'package:vaccinemgmt/models/post_model.dart';
+import 'package:vaccinemgmt/shared/videoPlayer.dart';
 import 'dart:io';
-import 'package:chewie/chewie.dart';
 import 'globals.dart' as global;
-import 'package:video_player/video_player.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 String type = "Video";
+
+bool loaded = false;
 
 class FeedScreen extends StatefulWidget {
   @override
@@ -16,7 +16,6 @@ class FeedScreen extends StatefulWidget {
 }
 
 class _FeedScreenState extends State<FeedScreen> {
-  bool loaded = false;
   Widget _buildPost(int index) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 0.0),
@@ -50,14 +49,12 @@ class _FeedScreenState extends State<FeedScreen> {
                       ),
                       child: CircleAvatar(
                         child: ClipOval(
-                          child: posts[index].type == "photo"
-                              ? Image.network(
-                                  posts[index].authorImageUrl,
-                                  height: 50.0,
-                                  width: 50.0,
-                                  fit: BoxFit.cover,
-                                )
-                              : null,
+                          child: Image.network(
+                            posts[index].authorImageUrl,
+                            height: 50.0,
+                            width: 50.0,
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ),
