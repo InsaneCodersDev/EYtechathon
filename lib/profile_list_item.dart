@@ -43,13 +43,13 @@ class ProfileListItem extends StatelessWidget {
           Icon(
             this.icon,
             size: kSpacingUnit.w * 2.5,
+            color: Colors.teal[100],
           ),
           SizedBox(width: kSpacingUnit.w * 1.5),
           Text(
             this.text,
             style: kTitleTextStyle.copyWith(
-              fontWeight: FontWeight.w500,
-            ),
+                fontWeight: FontWeight.w500, color: Colors.teal[100]),
           ),
           Spacer(),
           if (this.hasNavigation)

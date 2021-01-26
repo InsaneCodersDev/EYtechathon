@@ -1,6 +1,7 @@
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:vaccinemgmt/constants.dart';
 import 'package:vaccinemgmt/homePage.dart';
@@ -58,7 +59,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             child: Stack(
               children: <Widget>[
                 CircularProfileAvatar(
-                  null,
+                  'https://instagram.fbom22-1.fna.fbcdn.net/v/t51.2885-19/s320x320/73457367_681556628996410_6035727685781553152_n.jpg?_nc_ht=instagram.fbom22-1.fna.fbcdn.net&_nc_ohc=JcjeP5OkT10AX8xPu27&tp=1&oh=06146332faa715222f3833e5121b7976&oe=6017E913',
                   // global.userdata == null ? "" : imgurl,
                   // radius:50,
                   animateFromOldImageOnUrlChange: true,
@@ -79,7 +80,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     height: kSpacingUnit.w * 2.5,
                     width: kSpacingUnit.w * 2.5,
                     decoration: BoxDecoration(
-                      color: Theme.of(context).accentColor,
+                      color: Colors.teal[200],
                       shape: BoxShape.circle,
                     ),
                     child: Center(
@@ -87,7 +88,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       widthFactor: kSpacingUnit.w * 1.5,
                       child: Icon(
                         LineAwesomeIcons.pen,
-                        color: kDarkPrimaryColor,
+                        color: Colors.black,
                         size: ScreenUtil().setSp(kSpacingUnit.w * 1.5),
                       ),
                     ),
@@ -97,30 +98,31 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
           ),
           SizedBox(height: kSpacingUnit.w * 2),
-          Text(
-            "Girish",
-            style: kTitleTextStyle,
-          ),
+          Text("Girish Salunke",
+              style: TextStyle(fontFamily: "Varela", fontSize: 25)),
           SizedBox(height: kSpacingUnit.w * 0.5),
           Text(
-            "omigirish1999@gmail.com",
-            style: kCaptionTextStyle,
+            "Aadhaar: 987654321",
+            style: TextStyle(fontFamily: "Varela", fontSize: 15),
           ),
           SizedBox(height: kSpacingUnit.w * 2),
           Container(
             height: kSpacingUnit.w * 4,
             width: kSpacingUnit.w * 20,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(kSpacingUnit.w * 3),
-              color: Theme.of(context).accentColor,
-            ),
+                borderRadius: BorderRadius.circular(kSpacingUnit.w * 3),
+                color: Colors.teal[400]),
             child: Center(
               child: Text(
-                "Random String",
+                "COVID Soldier",
                 // global.balance != null
                 // ? "BALANCE :  " + global.balance.toString()
                 // : "NO BALANCE",
-                style: kButtonTextStyle,
+                style: TextStyle(
+                    fontFamily: "Varela",
+                    fontSize: 18,
+                    color: Colors.black87,
+                    fontWeight: FontWeight.bold),
               ),
             ),
           ),
@@ -232,7 +234,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         },
                         child: ProfileListItem(
                           icon: LineAwesomeIcons.phone,
-                          text: 'Add/Change you Number',
+                          text: 'Contact US',
                         ),
                       ),
                       GestureDetector(
@@ -245,8 +247,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       GestureDetector(
                         onTap: () async {},
                         child: ProfileListItem(
-                          icon: LineAwesomeIcons.question_circle,
-                          text: 'Remove 100',
+                          icon: FontAwesomeIcons.certificate,
+                          text: 'View Certificate',
                         ),
                       ),
                       ProfileListItem(

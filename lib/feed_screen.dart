@@ -82,7 +82,7 @@ class _FeedScreenState extends State<FeedScreen> {
                             posts[index].imageUrl,
                             width: double.infinity,
                           )
-                        : VideoPlayer(posts[index].imageUrl),
+                        : VideoPlayer(posts[index].imageUrl, posts[index].type),
                   ),
                   Padding(
                     padding: EdgeInsets.fromLTRB(0, 12, 0, 2),
