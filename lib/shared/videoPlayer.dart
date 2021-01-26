@@ -6,6 +6,7 @@ VideoPlayerController _controller;
 
 class VideoPlayer extends StatefulWidget {
   String videourl;
+
   VideoPlayer(String videourl);
   @override
   _VideoPlayerState createState() => _VideoPlayerState();
