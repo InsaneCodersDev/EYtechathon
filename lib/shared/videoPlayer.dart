@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 import 'package:better_player/better_player.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 VideoPlayerController _controller;
+YoutubePlayerController _ycontroller;
 
 class VideoPlayer extends StatefulWidget {
   String videourl;
-
-  VideoPlayer(String videourl);
+  String type;
+  VideoPlayer(this.videourl, this.type);
   @override
   _VideoPlayerState createState() => _VideoPlayerState();
 }
@@ -19,9 +21,17 @@ class _VideoPlayerState extends State<VideoPlayer> {
     _initializeVideoPlayerFuture = _controller.initialize();
     _controller.setLooping(true);
 
+    _ycontroller = YoutubePlayerController(
+      initialVideoId: YoutubePlayer.convertUrlToId(widget.videourl),
+      flags: YoutubePlayerFlags(
+        autoPlay: true,
+        mute: false,
+      ),
+    );
+
     WidgetsBinding.instance.addPostFrameCallback((_) {
       // mutes the video
-      _controller.setVolume(0.0);
+      _controller.setVolume(1.0);
 
       // Plays the video once the widget is build and loaded.
       _controller.play();
@@ -31,20 +41,32 @@ class _VideoPlayerState extends State<VideoPlayer> {
 
   @override
   Widget build(BuildContext context) {
+    // print("Type: " + widget.type);
     return FutureBuilder(
       future: _initializeVideoPlayerFuture,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           return Center(
-              child: AspectRatio(
-            aspectRatio: _controller.value.aspectRatio,
-            child: BetterPlayer.network(
-              "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-              betterPlayerConfiguration: BetterPlayerConfiguration(
-                aspectRatio: 1 / 1,
-              ),
+            child: AspectRatio(
+              aspectRatio: 16 / 9,
+              child: widget.type.compareTo("youtube") == 0
+                  ? YoutubePlayer(
+                      controller: _ycontroller,
+                      showVideoProgressIndicator: true,
+                      progressIndicatorColor: Colors.amber,
+                      progressColors: ProgressBarColors(
+                        playedColor: Colors.teal,
+                        handleColor: Colors.teal[200],
+                      ),
+                    )
+                  : BetterPlayer.network(
+                      widget.videourl,
+                      betterPlayerConfiguration: BetterPlayerConfiguration(
+                        aspectRatio: 16 / 9,
+                      ),
+                    ),
             ),
-          ));
+          );
         } else {
           return Center(
             child: CircularProgressIndicator(),

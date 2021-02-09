@@ -77,12 +77,12 @@ class _FeedScreenState extends State<FeedScreen> {
                   ),
                   InkWell(
                     onDoubleTap: () => print('Like post'),
-                    child: posts[index].type == "photo"
+                    child: posts[index].type == "Photo"
                         ? Image.network(
                             posts[index].imageUrl,
                             width: double.infinity,
                           )
-                        : VideoPlayer(posts[index].imageUrl),
+                        : VideoPlayer(posts[index].imageUrl, posts[index].type),
                   ),
                   Padding(
                     padding: EdgeInsets.fromLTRB(0, 12, 0, 2),
@@ -159,9 +159,9 @@ class _FeedScreenState extends State<FeedScreen> {
     posts = [];
     loaded = true;
     var httpClient = new HttpClient();
-    print(global.tunneldomain.substring(8));
+    print(global.tunneldomain.substring(7) + '/database/getposts');
     var uri =
-        new Uri.https(global.tunneldomain.substring(8), '/database/getposts');
+        new Uri.http(global.tunneldomain.substring(7), '/database/getposts');
     var request = await httpClient.getUrl(uri);
     var response = await request.close();
     var responseBody = await response.transform(utf8.decoder).join();
