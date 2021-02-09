@@ -44,7 +44,6 @@ dependencies:
   animated_theme_switcher: ^1.0.5
   circular_profile_avatar: ^1.0.6
   url_launcher: ^5.7.10
-  lite_rolling_switch: ^0.1.1
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.0
@@ -52,13 +51,15 @@ dependencies:
   camera:
   flutter_picker:
   awesome_dialog:
-  web3dart:
   http: ^0.12.2
   shared_preferences: 0.5.8
   chewie: ^0.9.10
   video_player: ^0.10.9
   better_player: 
   youtube_player_flutter: ^7.0.0+7
+  share: ^0.6.2+3
+  geolocator: ^6.1.14
+  linkwell: ^0.1.9
 
 dev_dependencies:
   flutter_test:

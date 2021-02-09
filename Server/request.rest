@@ -1,4 +1,4 @@
  
  ### Get All Posts
- GET https://f16eeaf23364.ngrok.io/database/getposts
+ GET http://13.233.99.51:8000/database/getposts
 
