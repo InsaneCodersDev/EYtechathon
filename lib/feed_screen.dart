@@ -1,4 +1,5 @@
 import 'dart:convert';
+// import 'dart:html';
 import 'package:flutter/material.dart';
 import 'package:vaccinemgmt/models/post_model.dart';
 import 'package:vaccinemgmt/shared/videoPlayer.dart';
@@ -82,12 +83,15 @@ class _FeedScreenState extends State<FeedScreen> {
                             posts[index].imageUrl,
                             width: double.infinity,
                           )
-                        : VideoPlayer(posts[index].imageUrl, posts[index].type),
+                        : posts[index].type != "Status"
+                            ? VideoPlayer(
+                                posts[index].imageUrl, posts[index].type)
+                            : Container(),
                   ),
                   Padding(
                     padding: EdgeInsets.fromLTRB(0, 12, 0, 2),
                     child: Text(
-                      "Description: " + posts[index].caption,
+                      " Caption: " + posts[index].caption,
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
@@ -159,7 +163,7 @@ class _FeedScreenState extends State<FeedScreen> {
     posts = [];
     loaded = true;
     var httpClient = new HttpClient();
-    print(global.tunneldomain.substring(7) + '/database/getposts');
+    print(global.tunneldomain.substring(7));
     var uri =
         new Uri.http(global.tunneldomain.substring(7), '/database/getposts');
     var request = await httpClient.getUrl(uri);

@@ -54,7 +54,7 @@ router.post('/addPost', jsonParser, (req, res) => {
                         res.send("File Uploaded Sucessfully");
                     }).catch(err => console.log("Oops, Mistake hogayi" + err));
                 }else{
-                    console.log("user not present");
+                    console.log("User not present");
                 }
             }).catch(err=>console.log(err));
 }

@@ -1,7 +1,12 @@
+// import 'dart:ffi';
+// import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:vaccinemgmt/models/message_model.dart';
 import 'package:vaccinemgmt/models/user_model.dart';
 import "package:flutter_dialogflow/dialogflow_v2.dart";
+import 'package:geolocator/geolocator.dart';
+import 'package:linkwell/linkwell.dart';
 
 class ChatScreen extends StatefulWidget {
   final User user;
@@ -33,6 +38,15 @@ class _ChatScreenState extends State<ChatScreen> {
     });
   }
 
+  void sendLocation(query) async {
+    AuthGoogle authgoogle =
+        await AuthGoogle(fileJson: "assets/immunobot-habo-66a9f49e5bf1.json")
+            .build();
+    Dialogflow dialogflow =
+        Dialogflow(authGoogle: authgoogle, language: Language.english);
+    AIResponse aiResponse = await dialogflow.detectIntent(query);
+  }
+
   _chatBubble(Message message, bool response) {
     if (!response) {
       return Column(
@@ -51,9 +65,7 @@ class _ChatScreenState extends State<ChatScreen> {
               ),
               child: Text(
                 message.text,
-                style: TextStyle(
-                  color: Colors.white,
-                ),
+                style: TextStyle(color: Colors.black87, fontFamily: "Varela"),
               ),
             ),
           ),
@@ -76,7 +88,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         shape: BoxShape.circle,
                       ),
                       child: CircleAvatar(
-                        radius: 15,
+                        radius: 12,
                         backgroundImage: AssetImage('assets/images/thor.png'),
                       ),
                     ),
@@ -102,11 +114,12 @@ class _ChatScreenState extends State<ChatScreen> {
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(15),
               ),
-              child: Text(
+              child: LinkWell(
                 message.text,
                 style: TextStyle(
-                  color: Colors.black54,
-                ),
+                    color: Colors.black87,
+                    fontWeight: FontWeight.w500,
+                    fontFamily: 'Varela'),
               ),
             ),
           ),
@@ -118,7 +131,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         shape: BoxShape.circle,
                       ),
                       child: CircleAvatar(
-                        radius: 15,
+                        radius: 12,
                         backgroundImage:
                             AssetImage('assets/images/ironman.jpeg'),
                       ),
@@ -204,8 +217,19 @@ class _ChatScreenState extends State<ChatScreen> {
   ScrollController _scrollController = new ScrollController();
   final fieldText = TextEditingController();
   String user_input = "";
+
+  void getUserLocation() async {
+    var posn = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
+    var lastposn = await Geolocator.getLastKnownPosition();
+    print(lastposn);
+    print(posn.latitude.toString() + "\t" + posn.longitude.toString());
+    sendLocation(posn.latitude.toString() + "\t" + posn.longitude.toString());
+  }
+
   @override
   Widget build(BuildContext context) {
+    getUserLocation();
     return Scaffold(
       backgroundColor: Colors.grey[900],
       appBar: AppBar(

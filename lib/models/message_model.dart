@@ -14,4 +14,11 @@ class Message {
 }
 
 // EXAMPLE MESSAGES IN CHAT SCREEN
-List<Message> messages = [];
+List<Message> messages = [
+  Message(
+    response: true,
+    time: '4:30 PM',
+    text:
+        "Hello, \nI am Immunnobot\nYour Assistant in this pandemic.\nI can resolve all your queries and give you tips. \nTell me how can I help you?",
+  )
+];

@@ -42,37 +42,26 @@ class _VideoPlayerState extends State<VideoPlayer> {
   @override
   Widget build(BuildContext context) {
     // print("Type: " + widget.type);
-    return FutureBuilder(
-      future: _initializeVideoPlayerFuture,
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.done) {
-          return Center(
-            child: AspectRatio(
-              aspectRatio: 16 / 9,
-              child: widget.type.compareTo("youtube") == 0
-                  ? YoutubePlayer(
-                      controller: _ycontroller,
-                      showVideoProgressIndicator: true,
-                      progressIndicatorColor: Colors.amber,
-                      progressColors: ProgressBarColors(
-                        playedColor: Colors.teal,
-                        handleColor: Colors.teal[200],
-                      ),
-                    )
-                  : BetterPlayer.network(
-                      widget.videourl,
-                      betterPlayerConfiguration: BetterPlayerConfiguration(
-                        aspectRatio: 16 / 9,
-                      ),
-                    ),
-            ),
-          );
-        } else {
-          return Center(
-            child: CircularProgressIndicator(),
-          );
-        }
-      },
+    return Center(
+      child: AspectRatio(
+        aspectRatio: 16 / 9,
+        child: widget.type.compareTo("youtube") == 0
+            ? YoutubePlayer(
+                controller: _ycontroller,
+                showVideoProgressIndicator: true,
+                progressIndicatorColor: Colors.amber,
+                progressColors: ProgressBarColors(
+                  playedColor: Colors.teal,
+                  handleColor: Colors.teal[200],
+                ),
+              )
+            : BetterPlayer.network(
+                widget.videourl,
+                betterPlayerConfiguration: BetterPlayerConfiguration(
+                  aspectRatio: 16 / 9,
+                ),
+              ),
+      ),
     );
   }
 }
