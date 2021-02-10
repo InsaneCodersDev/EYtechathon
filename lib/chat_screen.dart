@@ -7,6 +7,9 @@ import 'package:vaccinemgmt/models/user_model.dart';
 import "package:flutter_dialogflow/dialogflow_v2.dart";
 import 'package:geolocator/geolocator.dart';
 import 'package:linkwell/linkwell.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+SharedPreferences localStorage;
 
 class ChatScreen extends StatefulWidget {
   final User user;
@@ -15,6 +18,9 @@ class ChatScreen extends StatefulWidget {
 
   @override
   _ChatScreenState createState() => _ChatScreenState();
+  static Future init() async {
+    localStorage = await SharedPreferences.getInstance();
+  }
 }
 
 class _ChatScreenState extends State<ChatScreen> {
@@ -38,13 +44,13 @@ class _ChatScreenState extends State<ChatScreen> {
     });
   }
 
-  void sendLocation(query) async {
+  void sendData(data) async {
     AuthGoogle authgoogle =
         await AuthGoogle(fileJson: "assets/immunobot-habo-66a9f49e5bf1.json")
             .build();
     Dialogflow dialogflow =
         Dialogflow(authGoogle: authgoogle, language: Language.english);
-    AIResponse aiResponse = await dialogflow.detectIntent(query);
+    AIResponse aiResponse = await dialogflow.detectIntent(data);
   }
 
   _chatBubble(Message message, bool response) {
@@ -219,12 +225,14 @@ class _ChatScreenState extends State<ChatScreen> {
   String user_input = "";
 
   void getUserLocation() async {
+    ChatScreen.init();
     var posn = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
     var lastposn = await Geolocator.getLastKnownPosition();
     print(lastposn);
     print(posn.latitude.toString() + "\t" + posn.longitude.toString());
-    sendLocation(posn.latitude.toString() + "\t" + posn.longitude.toString());
+    sendData(posn.latitude.toString() + "\t" + posn.longitude.toString());
+    sendData(localStorage.getString('aadhaar'));
   }
 
   @override

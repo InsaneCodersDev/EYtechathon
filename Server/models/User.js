@@ -7,14 +7,7 @@ let postSchema= new mongoose.Schema({
    password:String,
     vaccinated:String,
     score:Number,
-   medical_conditions:[{
-        "Diabetic":Boolean,
-        "Dproof_url":String,
-        "Pulmonary":Boolean,
-        "Pproof_url":String,
-        "Heart_disease":Boolean,
-        "Hproof_url":String,
-     }],
+   medical_conditions:Array
     
 
 },

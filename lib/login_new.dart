@@ -7,6 +7,7 @@ import 'package:vaccinemgmt/homePage.dart';
 import 'package:vaccinemgmt/screens/Signup/signup_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import "package:http/http.dart" as http;
+import 'globals.dart' as global;
 
 String loginurl = global.tunneldomain + "/database/login";
 TextEditingController aadhaarController = new TextEditingController();
@@ -175,8 +176,10 @@ class _LoginState extends State<Login> {
                                               {
                                                 localStorage.setString(
                                                     'authenticated', "true"),
-                                                print(localStorage.getString(
-                                                    'authenticated')),
+                                                localStorage.setString(
+                                                    'aadhaar',
+                                                    aadhaarController.text
+                                                        .toString()),
                                                 Navigator.of(context,
                                                         rootNavigator: true)
                                                     .push(MaterialPageRoute(
