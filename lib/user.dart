@@ -5,12 +5,15 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:vaccinemgmt/constants.dart';
 import 'package:vaccinemgmt/homePage.dart';
+import 'package:vaccinemgmt/invitefriend.dart';
 import 'package:vaccinemgmt/login_new.dart';
 import 'package:circular_profile_avatar/circular_profile_avatar.dart';
 import 'package:vaccinemgmt/services/imagecapture.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:vaccinemgmt/sharecertificate.dart';
 import 'profile_list_item.dart';
+import 'package:share/share.dart';
 
 SharedPreferences localStorage;
 
@@ -59,7 +62,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             child: Stack(
               children: <Widget>[
                 CircularProfileAvatar(
-                  'https://instagram.fbom22-1.fna.fbcdn.net/v/t51.2885-19/s320x320/73457367_681556628996410_6035727685781553152_n.jpg?_nc_ht=instagram.fbom22-1.fna.fbcdn.net&_nc_ohc=JcjeP5OkT10AX8xPu27&tp=1&oh=06146332faa715222f3833e5121b7976&oe=6017E913',
+                  'https://firebasestorage.googleapis.com/v0/b/eytechathon-insanecoders.appspot.com/o/user0.jpg?alt=media&token=ce53e405-d6f0-49ef-8cd9-917f5b8e230d',
                   // global.userdata == null ? "" : imgurl,
                   // radius:50,
                   animateFromOldImageOnUrlChange: true,
@@ -98,7 +101,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
           ),
           SizedBox(height: kSpacingUnit.w * 2),
-          Text("Girish Salunke",
+          Text("Janhavi Zarapkar",
               style: TextStyle(fontFamily: "Varela", fontSize: 25)),
           SizedBox(height: kSpacingUnit.w * 0.5),
           Text(
@@ -245,7 +248,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                       ),
                       GestureDetector(
-                        onTap: () async {},
+                        onTap: () async {
+                          Navigator.of(context, rootNavigator: true).push(
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      new ShareCertificate()));
+                        },
                         child: ProfileListItem(
                           icon: FontAwesomeIcons.certificate,
                           text: 'View Certificate',
@@ -255,9 +263,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         icon: LineAwesomeIcons.cog,
                         text: 'Settings',
                       ),
-                      ProfileListItem(
-                        icon: LineAwesomeIcons.user_plus,
-                        text: 'Invite a Friend',
+                      FlatButton(
+                        padding: EdgeInsets.all(0),
+                        onPressed: () {
+                          Share.share(
+                              'You can now download IMMUNOCHAIN App from here : https://drive.google.com/drive/u/2/folders/1nOWALjUvGpC_ozKkm4Z4h9cdK4QF6i8Z');
+                        },
+                        child: ProfileListItem(
+                          icon: LineAwesomeIcons.user_plus,
+                          text: 'Invite a Friend',
+                        ),
                       ),
                       GestureDetector(
                         onTap: () async {

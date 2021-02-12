@@ -24,6 +24,7 @@ dependencies:
   flutter:
     sdk: flutter
   barcode_scan: ^2.0.1
+  share: ^0.6.3+5 
   qr_flutter: ^3.2.0
   path_provider: ^1.6.5
   percent_indicator: ^2.1.5
@@ -57,7 +58,7 @@ dependencies:
   video_player: ^0.10.9
   better_player: 
   youtube_player_flutter: ^7.0.0+7
-  share: ^0.6.2+3
+
   geolocator: ^6.1.14
   linkwell: ^0.1.9
 
