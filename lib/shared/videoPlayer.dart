@@ -24,7 +24,7 @@ class _VideoPlayerState extends State<VideoPlayer> {
     _ycontroller = YoutubePlayerController(
       initialVideoId: YoutubePlayer.convertUrlToId(widget.videourl),
       flags: YoutubePlayerFlags(
-        autoPlay: true,
+        autoPlay: false,
         mute: false,
       ),
     );

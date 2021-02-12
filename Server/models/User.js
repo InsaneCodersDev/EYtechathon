@@ -7,7 +7,8 @@ let postSchema= new mongoose.Schema({
    password:String,
     vaccinated:String,
     score:Number,
-   medical_conditions:Array
+   medical_conditions:Array,
+   documents_url:Array
     
 
 },

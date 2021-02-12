@@ -1,6 +1,8 @@
 // import 'dart:ffi';
 // import 'dart:html';
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:vaccinemgmt/models/message_model.dart';
 import 'package:vaccinemgmt/models/user_model.dart';
@@ -8,6 +10,9 @@ import "package:flutter_dialogflow/dialogflow_v2.dart";
 import 'package:geolocator/geolocator.dart';
 import 'package:linkwell/linkwell.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:file_picker/file_picker.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 SharedPreferences localStorage;
 
@@ -24,6 +29,55 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
+  bool _uploadenabled = false;
+
+  Future<String> _startUpload(files) async {
+    var urls = [];
+    await Firebase.initializeApp();
+    final FirebaseStorage _storage = FirebaseStorage.instanceFor(
+        bucket: 'gs://eytechathon-insanecoders.appspot.com');
+    for (var file in files) {
+      String fileName = DateTime.now().toString();
+      String filePath = 'images/${fileName}';
+      await _storage.ref().child(filePath).putFile(File(file.path));
+      print(' THis is File name ..........images/${fileName}');
+      var ref = await Future.value(_storage.ref().child("images/" + fileName));
+      var url = await ref.getDownloadURL();
+      print(url);
+      urls.add(url);
+      messages.insert(
+        0,
+        Message(
+            response: false, time: '4:30 PM', text: url, isImageResponse: true),
+      );
+    }
+    String queryString = "Document: ";
+    int i = 0;
+    for (var url in urls) {
+      String query = queryString + url + " " + i.toString();
+      print(query);
+      response(query);
+      i++;
+    }
+
+    /// Unique file name for the file
+    // String fileName = DateTime.now().toString();
+    // String filePath = 'images/${fileName}';
+    // await _storage.ref().child(filePath).putFile(file);
+    // print(' THis is File name ..........images/${fileName}');
+    // var ref = await Future.value(_storage.ref().child("images/" + fileName));
+    // var url = await ref.getDownloadURL();
+    // print(url);
+    // response("Document:" + url);
+    // messages.insert(
+    //   0,
+    //   Message(
+    //       response: false, time: '4:30 PM', text: url, isImageResponse: true),
+    // );
+    _uploadenabled = false;
+    setState(() {});
+  }
+
   void response(query) async {
     AuthGoogle authgoogle =
         await AuthGoogle(fileJson: "assets/immunobot-habo-66a9f49e5bf1.json")
@@ -31,17 +85,27 @@ class _ChatScreenState extends State<ChatScreen> {
     Dialogflow dialogflow =
         Dialogflow(authGoogle: authgoogle, language: Language.english);
     AIResponse aiResponse = await dialogflow.detectIntent(query);
-    print(aiResponse.getListMessage()[0]["text"]["text"][0]);
-    setState(() {
+
+    if (aiResponse.getListMessage().length > 1) {
+      print(aiResponse.getListMessage()[1]["text"]["text"][0]);
+      if (aiResponse.getListMessage()[1]["text"]["text"][0] ==
+          "Prepare_to_Upload") {
+        _uploadenabled = true;
+      } else {
+        _uploadenabled = false;
+      }
+    }
+    if (aiResponse.getListMessage()[0]["text"]["text"][0] != "") {
       messages.insert(
         0,
         Message(
-          response: true,
-          time: '4:30 PM',
-          text: aiResponse.getListMessage()[0]["text"]["text"][0],
-        ),
+            response: true,
+            time: '4:30 PM',
+            text: aiResponse.getListMessage()[0]["text"]["text"][0],
+            isImageResponse: false),
       );
-    });
+      setState(() {});
+    }
   }
 
   void sendData(data) async {
@@ -53,7 +117,7 @@ class _ChatScreenState extends State<ChatScreen> {
     AIResponse aiResponse = await dialogflow.detectIntent(data);
   }
 
-  _chatBubble(Message message, bool response) {
+  _chatBubble(Message message, bool response, bool isImageResponse) {
     if (!response) {
       return Column(
         children: <Widget>[
@@ -69,10 +133,22 @@ class _ChatScreenState extends State<ChatScreen> {
                 color: Colors.teal[300],
                 borderRadius: BorderRadius.circular(15),
               ),
-              child: Text(
-                message.text,
-                style: TextStyle(color: Colors.black87, fontFamily: "Varela"),
-              ),
+              child: isImageResponse
+                  ? Image.network(
+                      message.text,
+                      loadingBuilder: (BuildContext context, Widget child,
+                          ImageChunkEvent loadingProgress) {
+                        if (loadingProgress == null) return child;
+                        return Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      },
+                    )
+                  : Text(
+                      message.text,
+                      style: TextStyle(
+                          color: Colors.black87, fontFamily: "Varela"),
+                    ),
             ),
           ),
           !response
@@ -120,13 +196,15 @@ class _ChatScreenState extends State<ChatScreen> {
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(15),
               ),
-              child: LinkWell(
-                message.text,
-                style: TextStyle(
-                    color: Colors.black87,
-                    fontWeight: FontWeight.w500,
-                    fontFamily: 'Varela'),
-              ),
+              child: isImageResponse
+                  ? Image.network(message.text)
+                  : LinkWell(
+                      message.text,
+                      style: TextStyle(
+                          color: Colors.black87,
+                          fontWeight: FontWeight.w500,
+                          fontFamily: 'Varela'),
+                    ),
             ),
           ),
           response
@@ -163,6 +241,7 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   _sendMessageArea() {
+    print("Problem: " + _uploadenabled.toString());
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 8),
       height: 70,
@@ -170,10 +249,28 @@ class _ChatScreenState extends State<ChatScreen> {
       child: Row(
         children: <Widget>[
           IconButton(
-            icon: Icon(Icons.photo),
-            iconSize: 25,
+            disabledColor: Colors.grey[800],
+            icon: Icon(Icons.attach_file_outlined),
+            iconSize: 30,
             color: Colors.teal[200],
-            onPressed: () {},
+            onPressed: _uploadenabled
+                ? () async {
+                    print("Attach");
+                    FilePickerResult result =
+                        await FilePicker.platform.pickFiles(
+                      type: FileType.custom,
+                      allowMultiple: true,
+                      allowedExtensions: ['jpg', 'pdf', 'jpeg', 'png'],
+                    );
+                    print(result.paths);
+                    print(result);
+                    // for (var file in result.files) {
+                    //   print(file.path);
+                    // }
+                    // await _startUpload(File(result.files[0].path));
+                    await _startUpload(result.files);
+                  }
+                : null,
           ),
           Expanded(
             child: TextField(
@@ -200,10 +297,10 @@ class _ChatScreenState extends State<ChatScreen> {
                 messages.insert(
                   0,
                   Message(
-                    response: false,
-                    time: '4:30 PM',
-                    text: user_input,
-                  ),
+                      response: false,
+                      time: '4:30 PM',
+                      text: user_input,
+                      isImageResponse: false),
                 );
                 _scrollController.animateTo(
                   0.0,
@@ -290,7 +387,8 @@ class _ChatScreenState extends State<ChatScreen> {
                 itemCount: messages.length,
                 itemBuilder: (BuildContext context, int index) {
                   final Message message = messages[index];
-                  return _chatBubble(message, message.response);
+                  return _chatBubble(
+                      message, message.response, message.isImageResponse);
                 },
               ),
             ),
