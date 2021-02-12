@@ -29,7 +29,7 @@ dependencies:
   percent_indicator: ^2.1.5
   fab_circular_menu: ^1.0.0
   firebase_auth: ^0.18.3+1
-  firebase_core: ^0.5.2+1
+  firebase_core: ^0.5.0
   image_cropper: 1.0.2
   image_picker: 0.6.0+17
   line_awesome_icons: ^1.0.4+2
@@ -38,7 +38,6 @@ dependencies:
   flutter_dialogflow: ^0.1.3
   flutter_spinkit: "^4.1.2"
   font_awesome_flutter: ^8.2.0
-  google_sign_in: ^4.5.6
   line_awesome_flutter: ^1.0.1
   flutter_screenutil: ^1.0.2
   animated_theme_switcher: ^1.0.5
@@ -53,13 +52,15 @@ dependencies:
   awesome_dialog:
   http: ^0.12.2
   shared_preferences: 0.5.8
-  chewie: ^0.9.10
+  # chewie: ^0.9.10
   video_player: ^0.10.9
   better_player: 
   youtube_player_flutter: ^7.0.0+7
   share: ^0.6.2+3
   geolocator: ^6.1.14
   linkwell: ^0.1.9
+  file_picker: 2.0.8+1
+  firebase_storage: 
 
 dev_dependencies:
   flutter_test:
