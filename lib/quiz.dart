@@ -23,8 +23,8 @@ class _StartPageState extends State<StartPage> {
   var counter = 0;
 
   List qList = [
-    Questions("1. Which of the following is not a Covid Vaccine ", 4, "Pfizer",
-        "Covishield", "Covaxin", "Covidio"),
+    Questions("1. Which of the following is not a Covid Vaccine???   ", 4,
+        "Pfizer", "Covishield", "Covaxin", "Covidio"),
     Questions("2.Kelvin is a measure of temperature.", 2, "Option A",
         "Option B", "Option C", "Option D"),
     Questions("3.The Atlantic Ocean is the biggest ocean on Earth.", 1,

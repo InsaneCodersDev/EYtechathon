@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:vaccinemgmt/MyPage.dart';
 import 'package:vaccinemgmt/QuizHeader.dart';
+import 'package:vaccinemgmt/covidhero.dart';
+import 'package:vaccinemgmt/immunostories.dart';
 import 'package:vaccinemgmt/quiz.dart';
 import 'dart:io';
 import 'globals.dart' as global;
@@ -44,7 +46,7 @@ class Leaderboard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Hi! Girish',
+                      'Hi! Janhavi',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 24,
@@ -153,177 +155,193 @@ class Leaderboard extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               padding: EdgeInsets.only(top: 18),
               children: [
-                Stack(
-                  overflow: Overflow.visible,
-                  children: [
-                    Container(
-                      padding: EdgeInsets.all(15),
-                      height: 270,
-                      width: 170,
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [
-                            Colors.teal[400],
-                            Colors.black,
-                          ],
+                FlatButton(
+                  padding: EdgeInsets.all(0),
+                  onPressed: () {
+                    Navigator.of(context, rootNavigator: true).push(
+                        MaterialPageRoute(
+                            builder: (context) => new StoryPage()));
+                  },
+                  child: Stack(
+                    overflow: Overflow.visible,
+                    children: [
+                      Container(
+                        padding: EdgeInsets.all(15),
+                        height: 270,
+                        width: 170,
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                              Colors.teal[400],
+                              Colors.black,
+                            ],
+                          ),
+                          borderRadius: BorderRadius.all(Radius.circular(20)),
                         ),
-                        borderRadius: BorderRadius.all(Radius.circular(20)),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 100, left: 12),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Immuno\nHistory',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 22,
-                              fontWeight: FontWeight.w900,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 8,
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              color: Color.fromRGBO(245, 196, 148, 1)
-                                  .withOpacity(0.5),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20)),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 15, right: 15, top: 5, bottom: 5),
-                              child: Row(
-                                children: [
-                                  Text(
-                                    '10',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 18,
-                                    ),
-                                  ),
-                                  Icon(
-                                    Icons.star,
-                                    color: Colors.white,
-                                  ),
-                                ],
+                      Padding(
+                        padding: const EdgeInsets.only(top: 100, left: 12),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Immuno\nHistory',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 22,
+                                fontWeight: FontWeight.w900,
                               ),
                             ),
-                          ),
-                          SizedBox(
-                            height: 12,
-                          ),
-                          Text(
-                            'Tomorrow',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
+                            SizedBox(
+                              height: 8,
                             ),
-                          ),
-                        ],
+                            Container(
+                              decoration: BoxDecoration(
+                                color: Color.fromRGBO(245, 196, 148, 1)
+                                    .withOpacity(0.5),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20)),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 15, right: 15, top: 5, bottom: 5),
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      '10',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 18,
+                                      ),
+                                    ),
+                                    Icon(
+                                      Icons.star,
+                                      color: Colors.white,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 12,
+                            ),
+                            Text(
+                              'Tomorrow',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                    Positioned(
-                      bottom: 175,
-                      left: 0,
-                      child: Image(
-                        image: AssetImage('assets/images/his.png'),
-                        height: 125,
+                      Positioned(
+                        bottom: 175,
+                        left: 0,
+                        child: Image(
+                          image: AssetImage('assets/images/his.png'),
+                          height: 125,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
                 SizedBox(
                   width: 20,
                 ),
-                Stack(
-                  overflow: Overflow.visible,
-                  children: [
-                    Container(
-                      padding: EdgeInsets.all(15),
-                      height: 270,
-                      width: 170,
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [
-                            Colors.teal[400],
-                            Colors.black,
-                          ],
+                FlatButton(
+                  padding: EdgeInsets.all(0),
+                  onPressed: () {
+                    Navigator.of(context, rootNavigator: true).push(
+                        MaterialPageRoute(
+                            builder: (context) => new CovidHeroPage()));
+                  },
+                  child: Stack(
+                    overflow: Overflow.visible,
+                    children: [
+                      Container(
+                        padding: EdgeInsets.all(15),
+                        height: 270,
+                        width: 170,
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                              Colors.teal[400],
+                              Colors.black,
+                            ],
+                          ),
+                          borderRadius: BorderRadius.all(Radius.circular(20)),
                         ),
-                        borderRadius: BorderRadius.all(Radius.circular(20)),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 100, left: 12),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'COVID\nHeroes',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 22,
-                              fontWeight: FontWeight.w900,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 8,
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              color: Colors.white.withOpacity(0.2),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20)),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 15, right: 15, top: 5, bottom: 5),
-                              child: Row(
-                                children: [
-                                  Text(
-                                    '10',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 18,
-                                    ),
-                                  ),
-                                  Icon(
-                                    Icons.star,
-                                    color: Colors.white,
-                                  ),
-                                ],
+                      Padding(
+                        padding: const EdgeInsets.only(top: 100, left: 12),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'COVID\nHeroes',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 22,
+                                fontWeight: FontWeight.w900,
                               ),
                             ),
-                          ),
-                          SizedBox(
-                            height: 12,
-                          ),
-                          Text(
-                            '2 Days',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
+                            SizedBox(
+                              height: 8,
                             ),
-                          ),
-                        ],
+                            Container(
+                              decoration: BoxDecoration(
+                                color: Colors.white.withOpacity(0.2),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20)),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 15, right: 15, top: 5, bottom: 5),
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      '10',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 18,
+                                      ),
+                                    ),
+                                    Icon(
+                                      Icons.star,
+                                      color: Colors.white,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 12,
+                            ),
+                            Text(
+                              '2 Days',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                    Positioned(
-                      bottom: 100,
-                      left: 40,
-                      child: Image(
-                        image: AssetImage('assets/images/h1.png'),
-                        height: 255,
+                      Positioned(
+                        bottom: 100,
+                        left: 40,
+                        child: Image(
+                          image: AssetImage('assets/images/h1.png'),
+                          height: 255,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ],
             ),
