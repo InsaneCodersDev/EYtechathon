@@ -13,7 +13,7 @@ class ShareCertificate extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.teal,
           visualDensity: VisualDensity.adaptivePlatformDensity,
-          scaffoldBackgroundColor: Colors.black,
+          scaffoldBackgroundColor: Colors.grey[900],
         ),
         home: MainPage(),
       );
