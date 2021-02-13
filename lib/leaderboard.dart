@@ -4,10 +4,31 @@ import 'package:percent_indicator/percent_indicator.dart';
 import 'package:vaccinemgmt/MyPage.dart';
 import 'package:vaccinemgmt/QuizHeader.dart';
 import 'package:vaccinemgmt/quiz.dart';
+import 'dart:io';
+import 'globals.dart' as global;
+import 'dart:convert';
 
 class Leaderboard extends StatelessWidget {
+  var quizes = [];
+  Future _getQuizes() async {
+    var httpClient = new HttpClient();
+    print(global.tunneldomain.substring(7));
+    var uri =
+        new Uri.http(global.tunneldomain.substring(7), '/database/getQuiz');
+    var request = await httpClient.getUrl(uri);
+    var response = await request.close();
+    var responseBody = await response.transform(utf8.decoder).join();
+    print(responseBody);
+
+    for (var quiz in jsonDecode(responseBody)) {
+      quizes.add(QuizHeader(quiz['username'], quiz['profile_url']));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    quizes = [];
+    _getQuizes();
     return Scaffold(
       backgroundColor: Colors.black87,
       body: Column(
@@ -109,10 +130,7 @@ class Leaderboard extends StatelessWidget {
               child: ListView(
                   padding: EdgeInsets.all(0),
                   scrollDirection: Axis.horizontal,
-                  children: [
-                    QuizHeader("Immunisation", 'assets/images/v2.png'),
-                    QuizHeader("Immunisation", "assets/images/v2.png")
-                  ])),
+                  children: [for (var quiz in quizes) quiz])),
 
           Padding(
             padding: EdgeInsets.only(top: 15, right: 280, left: 10),

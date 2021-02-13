@@ -51,7 +51,7 @@ router.get('/getQuiz',(req,res)=>{
     Quiz.find({},{quiz_name:1,quiz_startdate:1,quiz_enddate:1,quiz_url:1})
         .then(q=>{
           console.log(q);
-          res.send("done");
+          res.send(q);
         }).catch(err=>console.log(err));
 });
 

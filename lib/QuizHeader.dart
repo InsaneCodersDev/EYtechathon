@@ -85,8 +85,8 @@ class QuizHeader extends StatelessWidget {
         Positioned(
           bottom: 10,
           left: 220,
-          child: Image(
-            image: AssetImage(imgurl),
+          child: Image.network(
+            imgurl,
             height: 155,
           ),
         ),
