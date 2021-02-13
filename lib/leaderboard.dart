@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:vaccinemgmt/MyPage.dart';
+import 'package:vaccinemgmt/QuizHeader.dart';
 import 'package:vaccinemgmt/quiz.dart';
 
 class Leaderboard extends StatelessWidget {
@@ -12,8 +13,8 @@ class Leaderboard extends StatelessWidget {
       body: Column(
         children: [
           Container(
-            height: 450,
-            margin: EdgeInsets.all(28),
+            height: 200,
+            margin: EdgeInsets.fromLTRB(28, 28, 28, 5),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -22,7 +23,7 @@ class Leaderboard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Hi Janhavi',
+                      'Hi! Girish',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 24,
@@ -98,125 +99,30 @@ class Leaderboard extends StatelessWidget {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 30),
-                  child: Stack(
-                    overflow: Overflow.visible,
-                    children: [
-                      Transform(
-                        transform: Matrix4.skewY(-0.05),
-                        child: Container(
-                          padding: EdgeInsets.all(15),
-                          height: 160,
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              // colors: [Color(0x000000), Color(0xBB923CB5)],
-                              colors: [
-                                Colors.teal[200],
-                                Colors.black54,
-                              ],
-                              begin: Alignment.topLeft,
-                              end: Alignment.bottomCenter,
-                            ),
-                            borderRadius: BorderRadius.all(Radius.circular(25)),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(18.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Immunisation',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 24,
-                                fontWeight: FontWeight.w900,
-                              ),
-                            ),
-                            Text(
-                              '10 Questions',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  top: 10, right: 15, left: 10),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  CircularPercentIndicator(
-                                    radius: 45.0,
-                                    lineWidth: 4.0,
-                                    animation: true,
-                                    percent: 0.2,
-                                    circularStrokeCap: CircularStrokeCap.round,
-                                    progressColor: Colors.black87,
-                                  ),
-                                  Transform(
-                                    transform: Matrix4.skewY(-0.05),
-                                    // origin: Offset(50.0, 40.0),
-                                    child: Material(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(10)),
-                                      child: MaterialButton(
-                                        onPressed: () {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (_) => QuizWiz()),
-                                          );
-                                        },
-                                        child: Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 30,
-                                              right: 30,
-                                              top: 10,
-                                              bottom: 10),
-                                          child: Text(
-                                            'Start',
-                                            style: TextStyle(
-                                                color: Colors.red.shade600,
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Positioned(
-                        bottom: 90,
-                        left: 220,
-                        child: Image(
-                          image: AssetImage('assets/images/v2.png'),
-                          height: 145,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 25),
-                  child: Text(
-                    'Upcoming',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 24,
-                      fontWeight: FontWeight.w900,
-                    ),
-                  ),
-                ),
               ],
+            ),
+          ),
+          Container(
+              height: 190,
+              width: double.infinity,
+              padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+              child: ListView(
+                  padding: EdgeInsets.all(0),
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    QuizHeader("Immunisation", 'assets/images/v2.png'),
+                    QuizHeader("Immunisation", "assets/images/v2.png")
+                  ])),
+
+          Padding(
+            padding: EdgeInsets.only(top: 15, right: 280, left: 10),
+            child: Text(
+              'Explore',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 26,
+                fontWeight: FontWeight.w900,
+              ),
             ),
           ),
 
@@ -232,24 +138,20 @@ class Leaderboard extends StatelessWidget {
                 Stack(
                   overflow: Overflow.visible,
                   children: [
-                    Transform(
-                      transform: Matrix4.skewY(-0.2),
-                      origin: Offset(50.0, 50.0),
-                      child: Container(
-                        padding: EdgeInsets.all(15),
-                        height: 270,
-                        width: 170,
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [
-                              Colors.teal[400],
-                              Colors.black,
-                            ],
-                          ),
-                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                    Container(
+                      padding: EdgeInsets.all(15),
+                      height: 270,
+                      width: 170,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            Colors.teal[400],
+                            Colors.black,
+                          ],
                         ),
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
                       ),
                     ),
                     Padding(
@@ -309,11 +211,11 @@ class Leaderboard extends StatelessWidget {
                       ),
                     ),
                     Positioned(
-                      bottom: 200,
+                      bottom: 175,
                       left: 0,
                       child: Image(
                         image: AssetImage('assets/images/his.png'),
-                        height: 144,
+                        height: 125,
                       ),
                     ),
                   ],
@@ -324,24 +226,20 @@ class Leaderboard extends StatelessWidget {
                 Stack(
                   overflow: Overflow.visible,
                   children: [
-                    Transform(
-                      transform: Matrix4.skewY(-0.2),
-                      origin: Offset(50.0, 50.0),
-                      child: Container(
-                        padding: EdgeInsets.all(15),
-                        height: 270,
-                        width: 170,
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [
-                              Colors.teal[400],
-                              Colors.black,
-                            ],
-                          ),
-                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                    Container(
+                      padding: EdgeInsets.all(15),
+                      height: 270,
+                      width: 170,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            Colors.teal[400],
+                            Colors.black,
+                          ],
                         ),
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
                       ),
                     ),
                     Padding(
@@ -400,7 +298,7 @@ class Leaderboard extends StatelessWidget {
                       ),
                     ),
                     Positioned(
-                      bottom: 140,
+                      bottom: 100,
                       left: 40,
                       child: Image(
                         image: AssetImage('assets/images/h1.png'),
