@@ -5,6 +5,7 @@ const immunogram = require('../models/immunogram');
 const Aadhar = require('../models/Aadhar');
 const User = require('../models/User');
 const OTP = require('../models/OTP');
+const Quiz = require('../models/Quiz');
 
 var bodyParser = require('body-parser');
 
@@ -44,6 +45,24 @@ router.get('/getUser', (req, res) => {
   }).catch(err => console.log("Oops, Mistake hogayi" + err));
  
 });
+
+router.get('/getQuiz',(req,res)=>{
+    console.log("quiz");
+    Quiz.find({},{quiz_name:1,quiz_startdate:1,quiz_enddate:1,quiz_url:1})
+        .then(q=>{
+          console.log(q);
+          res.send("done");
+        }).catch(err=>console.log(err));
+});
+
+router.post('/getQuestions',jsonParser,(req,res)=>{
+  const name = req.body.name;
+  console.log(name);  
+  Quiz.find({quiz_name:name})
+      .then(quiz=>{
+        res.send(quiz);
+      }).catch(err=>console.log(err));
+})
 
 router.post('/generateotp',jsonParser,(req,res)=>{
   const aadhar_number =req.body.aadhar;
