@@ -171,7 +171,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       ),
                       child: CircleAvatar(
                         radius: 12,
-                        backgroundImage: AssetImage('assets/images/thor.png'),
+                        backgroundImage: AssetImage('assets/images/bot.jpg'),
                       ),
                     ),
                   ],
@@ -216,8 +216,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       ),
                       child: CircleAvatar(
                         radius: 12,
-                        backgroundImage:
-                            AssetImage('assets/images/ironman.jpeg'),
+                        backgroundImage: AssetImage('assets/images/bot.jpg'),
                       ),
                     ),
                     SizedBox(
@@ -347,7 +346,7 @@ class _ChatScreenState extends State<ChatScreen> {
           children: [
             CircleAvatar(
               radius: 20,
-              backgroundImage: AssetImage('assets/images/thor.png'),
+              backgroundImage: AssetImage('assets/images/bot.jpg'),
             ),
             SizedBox(width: 15),
             RichText(

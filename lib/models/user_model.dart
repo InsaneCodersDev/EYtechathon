@@ -60,12 +60,12 @@ final User blackWindow = User(
 final User thor = User(
   id: 7,
   name: 'Thor',
-  imageUrl: 'assets/images/thor.png',
+  imageUrl: 'assets/images/bot.jpg',
   isOnline: false,
 );
 final User captainMarvel = User(
   id: 8,
   name: 'Captain Marvel',
-  imageUrl: 'assets/images/captain-marvel.jpg',
+  imageUrl: 'assets/images/bot.jpg',
   isOnline: false,
 );
