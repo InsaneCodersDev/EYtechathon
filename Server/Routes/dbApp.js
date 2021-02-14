@@ -172,5 +172,21 @@ router.post('/login',jsonParser,(req,res)=>{
             res.send("Aadhar number not registered");
           }
         })
+});
+
+
+router.post('/userDetails',jsonParser,(req,res)=>{
+  const aadhar_no =req.body.aadhar;
+  console.log(typeof(aadhar_no));
+
+    User.findOne({aadhar_no:aadhar_no})
+        .then(user=>{
+          if(user!=null){
+            res.send(user);
+          }else{
+            console.log("aadhar number not registered");
+            res.send("Aadhar number not registered");
+          }
+        })
 })
 module.exports = router;

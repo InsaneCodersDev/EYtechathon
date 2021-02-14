@@ -258,30 +258,30 @@ class _LoginState extends State<Login> {
                                 children: <Widget>[
                                   // Icon(FontAwesomeIcons.facebookSquare,
                                   //     size: 25, color: Colors.teal[200]),
-                                  MaterialButton(
-                                    onPressed: () async {
-                                      setState(() {
-                                        loading = true;
-                                      });
+                                  // MaterialButton(
+                                  //   onPressed: () async {
+                                  //     setState(() {
+                                  //       loading = true;
+                                  //     });
 
-                                      print("The Loading Status is: " +
-                                          loading.toString());
-                                      // global.userinst.update({
-                                      //   'authid': FieldValue.arrayUnion([global.authid])
-                                      // });
+                                  //     print("The Loading Status is: " +
+                                  //         loading.toString());
+                                  //     // global.userinst.update({
+                                  //     //   'authid': FieldValue.arrayUnion([global.authid])
+                                  //     // });
 
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  HomePage()));
-                                    },
-                                    child: Icon(
-                                      FontAwesomeIcons.googlePlusSquare,
-                                      size: 28,
-                                      color: Colors.teal[200],
-                                    ),
-                                  ),
+                                  //     Navigator.push(
+                                  //         context,
+                                  //         MaterialPageRoute(
+                                  //             builder: (context) =>
+                                  //                 HomePage()));
+                                  //   },
+                                  //   child: Icon(
+                                  //     FontAwesomeIcons.googlePlusSquare,
+                                  //     size: 28,
+                                  //     color: Colors.teal[200],
+                                  //   ),
+                                  // ),
                                 ],
                               ),
                             ),

@@ -19,6 +19,7 @@ class _LeaderboardState extends State<Leaderboard> {
   bool loaded = false;
 
   Future _getQuizes() async {
+    quizes = [];
     loaded = true;
     var httpClient = new HttpClient();
     print(global.tunneldomain.substring(7));
