@@ -181,9 +181,8 @@ class _FeedScreenState extends State<FeedScreen> {
           no_likes: post["no_likes"].toString(),
           no_dislikes: post["no_dislikes"].toString(),
           type: post["type"].toString()));
-
-      setState(() {});
     }
+    setState(() {});
   }
 
   @override

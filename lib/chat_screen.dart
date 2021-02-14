@@ -13,6 +13,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 SharedPreferences localStorage;
 
@@ -134,15 +135,21 @@ class _ChatScreenState extends State<ChatScreen> {
                 borderRadius: BorderRadius.circular(15),
               ),
               child: isImageResponse
-                  ? Image.network(
-                      message.text,
-                      loadingBuilder: (BuildContext context, Widget child,
-                          ImageChunkEvent loadingProgress) {
-                        if (loadingProgress == null) return child;
-                        return Center(
-                          child: CircularProgressIndicator(),
-                        );
-                      },
+                  ?
+                  // ? Image.network(
+                  //     message.text,
+                  //     loadingBuilder: (BuildContext context, Widget child,
+                  //         ImageChunkEvent loadingProgress) {
+                  //       if (loadingProgress == null) return child;
+                  //       return Center(
+                  //         child: CircularProgressIndicator(),
+                  //       );
+                  //     },
+                  //   )
+                  CachedNetworkImage(
+                      imageUrl: message.text,
+                      placeholder: (context, url) =>
+                          CircularProgressIndicator(),
                     )
                   : Text(
                       message.text,

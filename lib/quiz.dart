@@ -1,49 +1,63 @@
+// import 'dart:io';
+
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:vaccinemgmt/quizModel.dart';
+import "package:http/http.dart" as http;
+import 'package:vaccinemgmt/globals.dart' as global;
 
-void main() => runApp(QuizWiz());
+String url = global.tunneldomain + "/database/getQuestions";
+List qList = [
+  Questions("bnljbkb", 1, "OptionA", "OptionB", "OptionC", "OptionD")
+];
 
 class QuizWiz extends StatelessWidget {
+  final String name;
+  QuizWiz(this.name);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'quiz app',
       debugShowCheckedModeBanner: false,
-      home: StartPage(),
+      home: StartPage(name),
     );
   }
 }
 
 class StartPage extends StatefulWidget {
+  final String name;
+  StartPage(this.name);
   @override
   _StartPageState createState() => _StartPageState();
 }
 
 class _StartPageState extends State<StartPage> {
-  var counter = 0;
+  @override
+  void initState() {
+    super.initState();
+    print("Initialised");
+    var data = {
+      "name": widget.name,
+    };
+    http.post(url, body: data).then((value) => {
+          print(jsonDecode(value.body)[0]["quiz_questions"].length),
+          for (var question in jsonDecode(value.body)[0]["quiz_questions"])
+            {
+              qList.add(Questions(
+                  question["question"],
+                  question["answer"],
+                  question["option1"],
+                  question["option2"],
+                  question["option3"],
+                  question["option4"])),
+              print(question["url"]),
+              print("qLIST: " + qList.toString())
+            }
+        });
+    setState(() {});
+  }
 
-  List qList = [
-    Questions("1. Which of the following is not a Covid Vaccine???   ", 4,
-        "Pfizer", "Covishield", "Covaxin", "Covidio"),
-    Questions("2.Kelvin is a measure of temperature.", 2, "Option A",
-        "Option B", "Option C", "Option D"),
-    Questions("3.The Atlantic Ocean is the biggest ocean on Earth.", 1,
-        "Option A", "Option B", "Option C", "Option D"),
-    Questions("4.Sharks are mammals.", 4, "Option A", "Option B", "Option C",
-        "Option D"),
-    Questions("5.The human skeleton is made up of less than 100 bones.", 1,
-        "Option A", "Option B", "Option C", "Option D"),
-    Questions("6.Atomic bombs work by atomic fission.", 1, "Option A",
-        "Option B", "Option C", "Option D"),
-    Questions("7.Molecules are chemically bonded.", 1, "Option A", "Option B",
-        "Option C", "Option D"),
-    Questions("8.Spiders have six legs.", 1, "Option A", "Option B", "Option C",
-        "Option D"),
-    Questions("9.Mount Kilimanjaro is the tallest mountain in the world.", 1,
-        "Option A", "Option B", "Option C", "Option D"),
-    Questions("10.The study of plants is known as botany.", 1, "Option A",
-        "Option B", "Option C", "Option D"),
-  ];
+  var counter = 0;
 
   var score = 0;
 
@@ -69,7 +83,7 @@ class _StartPageState extends State<StartPage> {
       Scaffold.of(context).showSnackBar(snackbar);
     }
     setState(() {
-      if (counter < 9) {
+      if (counter < 10) {
         counter = counter + 1;
       }
     });

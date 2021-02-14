@@ -1,5 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:percent_indicator/percent_indicator.dart';
+// import 'package:percent_indicator/percent_indicator.dart';
 import 'package:vaccinemgmt/quiz.dart';
 
 class QuizHeader extends StatelessWidget {
@@ -58,10 +59,16 @@ class QuizHeader extends StatelessWidget {
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                       child: MaterialButton(
                         onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (_) => QuizWiz()),
-                          );
+                          Navigator.of(context, rootNavigator: true).push(
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      new QuizWiz(quizHeader)));
+
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //       builder: (_) => QuizWiz(quizHeader)),
+                          // );
                         },
                         child: Padding(
                           padding: const EdgeInsets.only(
@@ -85,8 +92,8 @@ class QuizHeader extends StatelessWidget {
         Positioned(
           bottom: 10,
           left: 220,
-          child: Image(
-            image: AssetImage(imgurl),
+          child: CachedNetworkImage(
+            imageUrl: imgurl,
             height: 155,
           ),
         ),

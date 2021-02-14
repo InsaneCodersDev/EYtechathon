@@ -1,13 +1,46 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:percent_indicator/percent_indicator.dart';
 import 'package:vaccinemgmt/MyPage.dart';
 import 'package:vaccinemgmt/QuizHeader.dart';
 import 'package:vaccinemgmt/covidhero.dart';
 import 'package:vaccinemgmt/immunostories.dart';
-import 'package:vaccinemgmt/quiz.dart';
+import 'dart:io';
+import 'globals.dart' as global;
+import 'dart:convert';
 
-class Leaderboard extends StatelessWidget {
+var quizes = [];
+
+class Leaderboard extends StatefulWidget {
+  @override
+  _LeaderboardState createState() => _LeaderboardState();
+}
+
+class _LeaderboardState extends State<Leaderboard> {
+  bool loaded = false;
+
+  Future _getQuizes() async {
+    loaded = true;
+    var httpClient = new HttpClient();
+    print(global.tunneldomain.substring(7));
+    var uri =
+        new Uri.http(global.tunneldomain.substring(7), '/database/getQuiz');
+    var request = await httpClient.getUrl(uri);
+    var response = await request.close();
+    var responseBody = await response.transform(utf8.decoder).join();
+    // print(responseBody);
+
+    for (var quiz in jsonDecode(responseBody)) {
+      quizes.add(QuizHeader(quiz['quiz_name'], quiz['quiz_url']));
+    }
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _getQuizes();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -111,10 +144,7 @@ class Leaderboard extends StatelessWidget {
               child: ListView(
                   padding: EdgeInsets.all(0),
                   scrollDirection: Axis.horizontal,
-                  children: [
-                    QuizHeader("Immunisation", 'assets/images/v2.png'),
-                    QuizHeader("Immunisation", "assets/images/v2.png")
-                  ])),
+                  children: [for (var quiz in quizes) quiz])),
 
           Padding(
             padding: EdgeInsets.only(top: 15, right: 280, left: 10),
