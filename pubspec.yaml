@@ -24,7 +24,8 @@ dependencies:
   flutter:
     sdk: flutter
   barcode_scan: ^2.0.1
-  share: ^0.6.3+5 
+  share: ^0.6.3+5
+  esys_flutter_share: ^1.0.2 
   qr_flutter: ^3.2.0
   path_provider: ^1.6.5
   percent_indicator: ^2.1.5

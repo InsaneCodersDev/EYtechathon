@@ -1,64 +1,43 @@
+import 'dart:io';
+import 'dart:typed_data';
+import 'package:file_picker/file_picker.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:vaccinemgmt/share_files_widget.dart';
-import 'package:vaccinemgmt/share_text_widget.dart';
+import 'package:vaccinemgmt/share_button_widget.dart';
+import 'package:esys_flutter_share/esys_flutter_share.dart';
 
 class ShareCertificate extends StatelessWidget {
   static final String title = 'YOUR CERTIFICATE';
-
+  final controller = TextEditingController();
   @override
-  Widget build(BuildContext context) => MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: title,
-        theme: ThemeData(
-          primarySwatch: Colors.teal,
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-          scaffoldBackgroundColor: Colors.grey[900],
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.grey[900],
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.network(
+                "https://immunoapi.radiantdaman.com/generateCerti?name=Janhavi Zarapkar&task=Covid Warrior"),
+            SizedBox(height: 32),
+            ShareButtonWidget(onClicked: () async {
+              var request = await HttpClient().getUrl(Uri.parse(
+                  'https://immunoapi.radiantdaman.com/generateCerti?name=Girish&task=Covid Warrior'));
+              var response = await request.close();
+              Uint8List bytes =
+                  await consolidateHttpClientResponseBytes(response);
+              await Share.file('Certificate of Appreciation', 'Certificate.jpg',
+                  bytes, 'image/jpg');
+            }),
+          ],
         ),
-        home: MainPage(),
-      );
-}
+      ),
+    );
 
-class MainPage extends StatefulWidget {
-  @override
-  _MainPageState createState() => _MainPageState();
-}
+    Future<List<String>> pickFile() async {
+      final result = await FilePicker.platform.pickFiles(allowMultiple: true);
 
-class _MainPageState extends State<MainPage> {
-  int index = 0;
-
-  @override
-  Widget build(BuildContext context) => Scaffold(
-        bottomNavigationBar: buildBottomBar(),
-        body: buildPages(),
-      );
-
-  Widget buildBottomBar() => BottomNavigationBar(
-        backgroundColor: Theme.of(context).primaryColor,
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.white70,
-        currentIndex: index,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.link),
-            label: 'Share text',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.file_copy),
-            label: 'Share files',
-          ),
-        ],
-        onTap: (int index) => setState(() => this.index = index),
-      );
-
-  Widget buildPages() {
-    switch (index) {
-      case 0:
-        return ShareTextWidget();
-      case 1:
-        return ShareFilesWidget();
-      default:
-        return Container();
+      return result == null ? <String>[] : result.paths;
     }
   }
 }
