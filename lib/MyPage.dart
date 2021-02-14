@@ -37,11 +37,11 @@ class MyPage extends StatelessWidget {
               ),
               Image(
                 image: AssetImage('assets/images/face2.png'),
-                height: 60,
+                height: 50,
               ),
               Image(
                 image: AssetImage('assets/images/face3.png'),
-                height: 60,
+                height: 50,
               ),
               Image(
                 image: AssetImage('assets/images/face4.png'),
@@ -49,7 +49,7 @@ class MyPage extends StatelessWidget {
               ),
               Image(
                 image: AssetImage('assets/images/face5.png'),
-                height: 60,
+                height: 50,
               ),
             ]),
         body: Container(
@@ -179,7 +179,7 @@ class MyPage extends StatelessWidget {
                         height: 10,
                       ),
                       Image(
-                        image: AssetImage('assets/images/face1.png'),
+                        image: AssetImage('assets/images/face10.png'),
                         height: 40,
                       ),
                     ],
@@ -201,7 +201,7 @@ class MyPage extends StatelessWidget {
                         height: 10,
                       ),
                       Image(
-                        image: AssetImage('assets/images/face2.png'),
+                        image: AssetImage('assets/images/face11.png'),
                         height: 40,
                       ),
                     ],
@@ -223,7 +223,7 @@ class MyPage extends StatelessWidget {
                         height: 10,
                       ),
                       Image(
-                        image: AssetImage('assets/images/face3.png'),
+                        image: AssetImage('assets/images/face12.png'),
                         height: 40,
                       ),
                     ],
@@ -245,8 +245,8 @@ class MyPage extends StatelessWidget {
                         height: 10,
                       ),
                       Image(
-                        image: AssetImage('assets/images/face4.png'),
-                        height: 40,
+                        image: AssetImage('assets/images/face13.png'),
+                        height: 38,
                       ),
                     ],
                   ),
@@ -267,8 +267,8 @@ class MyPage extends StatelessWidget {
                         height: 10,
                       ),
                       Image(
-                        image: AssetImage('assets/images/face5.png'),
-                        height: 40,
+                        image: AssetImage('assets/images/face55.png'),
+                        height: 39,
                       ),
                     ],
                   ),
