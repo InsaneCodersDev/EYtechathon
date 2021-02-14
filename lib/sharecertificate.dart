@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:vaccinemgmt/share_button_widget.dart';
 import 'package:esys_flutter_share/esys_flutter_share.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class ShareCertificate extends StatelessWidget {
   static final String title = 'YOUR CERTIFICATE';
@@ -17,12 +18,26 @@ class ShareCertificate extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.network(
-                "https://immunoapi.radiantdaman.com/generateCerti?name=Janhavi Zarapkar&task=Covid Warrior"),
+            Container(
+              height: 300,
+              child: ListView(scrollDirection: Axis.horizontal, children: [
+                CachedNetworkImage(
+                  placeholder: (context, url) =>
+                      Center(child: CircularProgressIndicator()),
+                  imageUrl:
+                      "https://immunoapi.radiantdaman.com/generateCerti?name=Janhavi Zarapkar&task=Covid Warrior",
+                ),
+                CachedNetworkImage(
+                  placeholder: (context, url) => CircularProgressIndicator(),
+                  imageUrl:
+                      "https://immunoapi.radiantdaman.com/generateCerti?name=Janhavi &task=Covid ",
+                ),
+              ]),
+            ),
             SizedBox(height: 32),
             ShareButtonWidget(onClicked: () async {
               var request = await HttpClient().getUrl(Uri.parse(
-                  'https://immunoapi.radiantdaman.com/generateCerti?name=Girish&task=Covid Warrior'));
+                  'https://immunoapi.radiantdaman.com/generateCerti?name=Janhavi Zarapkar&task=Covid Warrior'));
               var response = await request.close();
               Uint8List bytes =
                   await consolidateHttpClientResponseBytes(response);

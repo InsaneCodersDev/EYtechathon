@@ -7,9 +7,7 @@ import "package:http/http.dart" as http;
 import 'package:vaccinemgmt/globals.dart' as global;
 
 String url = global.tunneldomain + "/database/getQuestions";
-List qList = [
-  Questions("bnljbkb", 1, "OptionA", "OptionB", "OptionC", "OptionD")
-];
+List qList = [];
 
 class QuizWiz extends StatelessWidget {
   final String name;
@@ -32,34 +30,9 @@ class StartPage extends StatefulWidget {
 }
 
 class _StartPageState extends State<StartPage> {
-  @override
-  void initState() {
-    super.initState();
-    print("Initialised");
-    var data = {
-      "name": widget.name,
-    };
-    http.post(url, body: data).then((value) => {
-          print(jsonDecode(value.body)[0]["quiz_questions"].length),
-          for (var question in jsonDecode(value.body)[0]["quiz_questions"])
-            {
-              qList.add(Questions(
-                  question["question"],
-                  question["answer"],
-                  question["option1"],
-                  question["option2"],
-                  question["option3"],
-                  question["option4"])),
-              print(question["url"]),
-              print("qLIST: " + qList.toString())
-            }
-        });
-    setState(() {});
-  }
-
   var counter = 0;
-
   var score = 0;
+  bool loading = true;
 
   checkWin(int userChoice, BuildContext context) {
     if (userChoice == qList[counter].answer) {
@@ -83,8 +56,10 @@ class _StartPageState extends State<StartPage> {
       Scaffold.of(context).showSnackBar(snackbar);
     }
     setState(() {
-      if (counter < 10) {
+      if (counter < qList.length - 1) {
         counter = counter + 1;
+      } else {
+        reset();
       }
     });
   }
@@ -96,17 +71,37 @@ class _StartPageState extends State<StartPage> {
     });
   }
 
+  void _getQuestions() {
+    loading = false;
+    var data = {
+      "name": widget.name,
+    };
+    http.post(url, body: data).then((value) => {
+          print(jsonDecode(value.body)[0]["quiz_questions"].length),
+          for (var question in jsonDecode(value.body)[0]["quiz_questions"])
+            {
+              print("Adding" + qList.length.toString()),
+              qList.insert(
+                  0,
+                  Questions(
+                      question["question"],
+                      int.parse(question["answer"]),
+                      question["option1"],
+                      question["option2"],
+                      question["option3"],
+                      question["option4"])),
+              print(question["url"]),
+              print("qLIST: " + qList.toString()),
+              print("Adding" + qList.length.toString()),
+            }
+        });
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
+    loading ? _getQuestions() : null;
     return Scaffold(
-      // appBar: AppBar(
-      //   backgroundColor: Colors.teal[600],
-      //   title: Text(
-      //     'QUIZ',
-      //     style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-      //   ),
-      //   centerTitle: true,
-      // ),
       backgroundColor: Colors.grey[900],
       body: Builder(
         builder: (BuildContext context) => Container(
