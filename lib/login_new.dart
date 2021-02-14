@@ -1,7 +1,6 @@
 import 'package:vaccinemgmt/Animation/FadeAnimation.dart';
 import 'package:flutter/material.dart';
 import 'package:vaccinemgmt/shared/loading.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:vaccinemgmt/globals.dart' as global;
 import 'package:vaccinemgmt/homePage.dart';
 import 'package:vaccinemgmt/screens/Signup/signup_screen.dart';
@@ -255,34 +254,7 @@ class _LoginState extends State<Login> {
                               Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceAround,
-                                children: <Widget>[
-                                  // Icon(FontAwesomeIcons.facebookSquare,
-                                  //     size: 25, color: Colors.teal[200]),
-                                  // MaterialButton(
-                                  //   onPressed: () async {
-                                  //     setState(() {
-                                  //       loading = true;
-                                  //     });
-
-                                  //     print("The Loading Status is: " +
-                                  //         loading.toString());
-                                  //     // global.userinst.update({
-                                  //     //   'authid': FieldValue.arrayUnion([global.authid])
-                                  //     // });
-
-                                  //     Navigator.push(
-                                  //         context,
-                                  //         MaterialPageRoute(
-                                  //             builder: (context) =>
-                                  //                 HomePage()));
-                                  //   },
-                                  //   child: Icon(
-                                  //     FontAwesomeIcons.googlePlusSquare,
-                                  //     size: 28,
-                                  //     color: Colors.teal[200],
-                                  //   ),
-                                  // ),
-                                ],
+                                children: <Widget>[],
                               ),
                             ),
                           ],

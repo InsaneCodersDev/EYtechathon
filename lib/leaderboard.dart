@@ -44,6 +44,7 @@ class _LeaderboardState extends State<Leaderboard> {
 
   @override
   Widget build(BuildContext context) {
+    global.getUserDetails();
     return Scaffold(
       backgroundColor: Colors.black87,
       body: Column(

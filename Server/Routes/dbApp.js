@@ -103,6 +103,7 @@ router.post('/signup',jsonParser,(req,res)=>{
   const aadhar_number =req.body.aadhar;
   const password = req.body.password;
   const otp = req.body.otp;
+  console.log(password);
 
   OTP.findOne({aadhar_number:aadhar_number})
       .then(user=>{
@@ -153,12 +154,14 @@ router.post('/login',jsonParser,(req,res)=>{
   const aadhar_no =req.body.aadhar;
   const password = req.body.password;
   console.log(password);
-  console.log(typeof(aadhar_no));
+  console.log(aadhar_no);
 
     User.findOne({aadhar_no:aadhar_no})
         .then(user=>{
           if(user!=null){
             bcrypt.compare(password, user.password).then((isMatch) => {
+              console.log(user.password);
+              console.log(password);
               if(isMatch){
                 console.log("Logged in");
                 res.send("True");
