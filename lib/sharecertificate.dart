@@ -25,12 +25,12 @@ class ShareCertificate extends StatelessWidget {
                   placeholder: (context, url) =>
                       Center(child: CircularProgressIndicator()),
                   imageUrl:
-                      "https://immunoapi.radiantdaman.com/generateCerti?name=Janhavi Zarapkar&task=Covid Warrior",
+                      "https://immunoapi.radiantdaman.com/generateCerti?name=Janhavi Zarapkar&task=Covid Warrior ",
                 ),
                 CachedNetworkImage(
                   placeholder: (context, url) => CircularProgressIndicator(),
                   imageUrl:
-                      "https://immunoapi.radiantdaman.com/generateCerti?name=Janhavi &task=Covid ",
+                      "https://immunoapi.radiantdaman.com/generateCerti?name=Janhavi Zarapkar&task=Quiz Master",
                 ),
               ]),
             ),

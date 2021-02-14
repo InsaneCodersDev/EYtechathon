@@ -105,7 +105,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               style: TextStyle(fontFamily: "Varela", fontSize: 25)),
           SizedBox(height: kSpacingUnit.w * 0.5),
           Text(
-            "Aadhaar: 987654321",
+            "Aadhaar: 9869417195",
             style: TextStyle(fontFamily: "Varela", fontSize: 15),
           ),
           SizedBox(height: kSpacingUnit.w * 2),
