@@ -4,15 +4,15 @@ import 'package:vaccinemgmt/constants.dart';
 
 class RoundedPasswordField extends StatelessWidget {
   final ValueChanged<String> onChanged;
-  const RoundedPasswordField({
-    Key key,
-    this.onChanged,
-  }) : super(key: key);
+  final dynamic controller;
+  const RoundedPasswordField({Key key, this.onChanged, this.controller})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFieldContainer(
       child: TextField(
+        controller: controller,
         obscureText: true,
         onChanged: onChanged,
         cursorColor: kPrimaryColor,

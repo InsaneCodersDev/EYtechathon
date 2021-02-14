@@ -19,6 +19,7 @@ class _LeaderboardState extends State<Leaderboard> {
   bool loaded = false;
 
   Future _getQuizes() async {
+    quizes = [];
     loaded = true;
     var httpClient = new HttpClient();
     print(global.tunneldomain.substring(7));
@@ -43,6 +44,7 @@ class _LeaderboardState extends State<Leaderboard> {
 
   @override
   Widget build(BuildContext context) {
+    global.getUserDetails();
     return Scaffold(
       backgroundColor: Colors.black87,
       body: Column(

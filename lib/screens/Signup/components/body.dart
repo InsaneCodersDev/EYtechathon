@@ -66,6 +66,7 @@ class _BodyState extends State<Body> {
                         },
                       ),
                       RoundedPasswordField(
+                        controller: passwordController,
                         onChanged: (value) {
                           password = value;
                         },
