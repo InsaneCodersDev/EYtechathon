@@ -16,6 +16,8 @@ This project the first prize award winning project that was developed as part of
 ## Solution
 ![Alt text](image-3.png)
 
+https://github.com/InsaneCodersDev/EYtechathon/assets/56110537/ab03d76a-08b1-462f-a729-4e63a9a785d2
+
 For a complete explanation of our project please watch the following video: https://drive.google.com/drive/folders/1nOWALjUvGpC_ozKkm4Z4h9cdK4QF6i8Z?usp=sharing
 
 ## Design
